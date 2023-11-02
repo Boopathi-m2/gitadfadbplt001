@@ -1,0 +1,468 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfadbdev001"
+		},
+		"adfadbplt001lsawswdvsgpw0006_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'adfadbplt001lsawswdvsgpw0006'",
+			"defaultValue": "Integrated Security=False;Data Source=awswdvsgpw0006.jx2.com;Initial Catalog=mds;User ID=MDS_PROD"
+		},
+		"adfadbplt001lssnfkpltdnaload_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'adfadbplt001lssnfkpltdnaload'",
+			"defaultValue": "jdbc:snowflake://yw48356.southeast-asia.azure.snowflakecomputing.com/?user=@{linkedService().snowflake_load_app_svc_name}&db=@{linkedService().snowflake_load_app_name}&warehouse=@{linkedService().snowflake_load_app_wh}&role=@{linkedService().snowflake_load_app_role}"
+		},
+		"adfadbplt001lsakvadbplt001_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://akvadbplt001.vault.azure.net/"
+		},
+		"adfadbplt001lsarsadpprd001_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "conap-dna-prod.c1opccqxcdw2.ap-southeast-1.redshift.amazonaws.com"
+		},
+		"adfadbplt001lsarsadpprd001_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "conapdna"
+		},
+		"adfadbplt001lsarsadpprd001_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "sa-jnj-kdp-local"
+		},
+		"adfadbplt001lsas3adpprd001_properties_typeProperties_accessKeyId": {
+			"type": "object",
+			"defaultValue": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "adfadbplt001lsakvadbplt001",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "adfadbplt001lsas3adpprd001-AccessID"
+			}
+		},
+		"adfadbplt001lsdbtclouddnacore_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://au.dbt.com/"
+		},
+		"adfadbplt001lsdlsadbplt001_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dlsadbplt001.dfs.core.windows.net/"
+		},
+		"adfadbplt001lsprdbitabap_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://prdbitabap.kenvue.com/api/3.17/"
+		},
+		"adfadbsbx001lsazrweksgpw0002_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azrweksgpw0003.kenvue.com/api.rsc/"
+		},
+		"adfiradbplt002_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/00ab5361-0cd5-44b3-b4df-8f24e00fe1df/resourcegroups/AZR-WEK-rg-adf-adb-001/providers/Microsoft.DataFactory/factories/adfadbplt001/integrationruntimes/adfiradbplt002"
+		},
+		"adfadbplt001mpepdlsadbplt001_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/00ab5361-0cd5-44b3-b4df-8f24e00fe1df/resourceGroups/AZR-WEK-rg-dls-adb-001/providers/Microsoft.Storage/storageAccounts/dlsadbplt001"
+		},
+		"adfadbplt001mpepdlsadbplt001_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"adfadbplt001mpepdlsadbplt002_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/00ab5361-0cd5-44b3-b4df-8f24e00fe1df/resourceGroups/AZR-WEK-rg-dls-adb-001/providers/Microsoft.Storage/storageAccounts/dlsadbplt002"
+		},
+		"adfadbplt001mpepdlsadbplt002_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/adfadbplt001lsakvadbplt001')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('adfadbplt001lsakvadbplt001_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfadbplt001lsarsadpprd001')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Linked Service to AWS Redshift in APAC DNA PLATFORM Production environment",
+				"annotations": [],
+				"type": "AmazonRedshift",
+				"typeProperties": {
+					"server": "[parameters('adfadbplt001lsarsadpprd001_properties_typeProperties_server')]",
+					"database": "[parameters('adfadbplt001lsarsadpprd001_properties_typeProperties_database')]",
+					"port": 5439,
+					"username": "[parameters('adfadbplt001lsarsadpprd001_properties_typeProperties_username')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "adfadbplt001lsakvadbplt001",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "adfadbplt001lsarsadpprd001"
+					}
+				},
+				"connectVia": {
+					"referenceName": "adfiradbplt002",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adfiradbplt002')]",
+				"[concat(variables('factoryId'), '/linkedServices/adfadbplt001lsakvadbplt001')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfadbplt001lsas3adpprd001')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Linked Services to JnJ ASPAC DNA PLATFORM S3 Production environment",
+				"annotations": [],
+				"type": "AmazonS3",
+				"typeProperties": {
+					"serviceUrl": "https://s3.amazonaws.com",
+					"accessKeyId": "[parameters('adfadbplt001lsas3adpprd001_properties_typeProperties_accessKeyId')]",
+					"secretAccessKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "adfadbplt001lsakvadbplt001",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "adfadbplt001lsas3adpprd001-SecretAccessKey"
+					},
+					"authenticationType": "AccessKey"
+				},
+				"connectVia": {
+					"referenceName": "adfiradbplt002",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adfiradbplt002')]",
+				"[concat(variables('factoryId'), '/linkedServices/adfadbplt001lsakvadbplt001')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfadbplt001lsawswdvsgpw0006')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Linked Service to MDS Production",
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"connectionString": "[parameters('adfadbplt001lsawswdvsgpw0006_connectionString')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "adfadbplt001lsakvadbplt001",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "adfadbplt001lsawswdvsgpw0006"
+					}
+				},
+				"connectVia": {
+					"referenceName": "adfiradbplt002",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adfiradbplt002')]",
+				"[concat(variables('factoryId'), '/linkedServices/adfadbplt001lsakvadbplt001')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfadbplt001lsdbtclouddnacore')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('adfadbplt001lsdbtclouddnacore_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous",
+					"authHeaders": {
+						"Authorization": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "adfadbplt001lsakvadbplt001",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "adfadbplt001lsdbtclouddnacore"
+						}
+					}
+				},
+				"connectVia": {
+					"referenceName": "adfiradbplt001",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adfiradbplt001')]",
+				"[concat(variables('factoryId'), '/linkedServices/adfadbplt001lsakvadbplt001')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfadbplt001lsdlsadbplt001')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('adfadbplt001lsdlsadbplt001_properties_typeProperties_url')]"
+				},
+				"connectVia": {
+					"referenceName": "adfiradbplt001",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adfiradbplt001')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfadbplt001lsprdbitabap')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Linked Service to AP Tableau Production",
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('adfadbplt001lsprdbitabap_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous"
+				},
+				"connectVia": {
+					"referenceName": "adfiradbplt002",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adfiradbplt002')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfadbplt001lssnfkpltdnaload')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"snowflake_load_app_name": {
+						"type": "string",
+						"defaultValue": "DEV_DNA_LOAD"
+					},
+					"snowflake_load_app_wh": {
+						"type": "string",
+						"defaultValue": "DEV_DNA_LOAD_INGEST1_WH"
+					},
+					"snowflake_load_app_role": {
+						"type": "string",
+						"defaultValue": "DEV_DNA_LOAD_INGESTION_SR"
+					},
+					"snowflake_load_app_kv": {
+						"type": "String",
+						"defaultValue": "adfadbplt001lssnfkdevdnaload"
+					},
+					"snowflake_load_app_svc_name": {
+						"type": "String",
+						"defaultValue": "SA-DNA-LOAD-DEV"
+					}
+				},
+				"annotations": [],
+				"type": "Snowflake",
+				"typeProperties": {
+					"authenticationType": "Basic",
+					"connectionString": "[parameters('adfadbplt001lssnfkpltdnaload_connectionString')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "adfadbplt001lsakvadbplt001",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": {
+							"value": "@linkedService().snowflake_load_app_kv",
+							"type": "Expression"
+						}
+					}
+				},
+				"connectVia": {
+					"referenceName": "adfiradbplt001",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adfiradbplt001')]",
+				"[concat(variables('factoryId'), '/linkedServices/adfadbplt001lsakvadbplt001')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfadbsbx001lsazrweksgpw0002')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Linked service to CData Sync Rest API in Production",
+				"annotations": [],
+				"type": "RestService",
+				"typeProperties": {
+					"url": "[parameters('adfadbsbx001lsazrweksgpw0002_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": true,
+					"authenticationType": "Anonymous",
+					"authHeaders": {
+						"x-cdata-authtoken": {
+							"type": "AzureKeyVaultSecret",
+							"store": {
+								"referenceName": "adfadbplt001lsakvadbplt001",
+								"type": "LinkedServiceReference"
+							},
+							"secretName": "adfadbsbx001lsazrweksgpw0002"
+						}
+					}
+				},
+				"connectVia": {
+					"referenceName": "adfiradbplt002",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/adfiradbplt002')]",
+				"[concat(variables('factoryId'), '/linkedServices/adfadbplt001lsakvadbplt001')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AutoResolveIntegrationRuntime')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "AutoResolve",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 0
+						}
+					}
+				},
+				"managedVirtualNetwork": {
+					"type": "ManagedVirtualNetworkReference",
+					"referenceName": "default"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfiradbplt001')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "Southeast Asia",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 10,
+							"cleanup": false,
+							"customProperties": []
+						},
+						"copyComputeScaleProperties": {
+							"dataIntegrationUnit": 16,
+							"timeToLive": 5
+						},
+						"pipelineExternalComputeScaleProperties": {
+							"timeToLive": 60,
+							"numberOfPipelineNodes": 1,
+							"numberOfExternalNodes": 1
+						}
+					}
+				},
+				"managedVirtualNetwork": {
+					"type": "ManagedVirtualNetworkReference",
+					"referenceName": "default"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/adfiradbplt002')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {
+					"linkedInfo": {
+						"resourceId": "[parameters('adfiradbplt002_properties_typeProperties_linkedInfo_resourceId')]",
+						"authorizationType": "Rbac"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks",
+			"apiVersion": "2018-06-01",
+			"properties": {},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/adfadbplt001mpepdlsadbplt001')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('adfadbplt001mpepdlsadbplt001_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('adfadbplt001mpepdlsadbplt001_properties_groupId')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default/adfadbplt001mpepdlsadbplt002')]",
+			"type": "Microsoft.DataFactory/factories/managedVirtualNetworks/managedPrivateEndpoints",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"privateLinkResourceId": "[parameters('adfadbplt001mpepdlsadbplt002_properties_privateLinkResourceId')]",
+				"groupId": "[parameters('adfadbplt001mpepdlsadbplt002_properties_groupId')]"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/managedVirtualNetworks/default')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/default')]",
+			"type": "Microsoft.DataFactory/factories/globalparameters",
+			"apiVersion": "2018-06-01",
+			"properties": {},
+			"dependsOn": []
+		}
+	]
+}

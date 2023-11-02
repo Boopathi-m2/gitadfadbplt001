@@ -1,0 +1,163 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfadbdev001"
+		},
+		"adfadbplt001lsawswdvsgpw0006_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'adfadbplt001lsawswdvsgpw0006'",
+			"defaultValue": "Integrated Security=False;Data Source=awswdvsgpw0006.jx2.com;Initial Catalog=mds;User ID=MDS_PROD"
+		},
+		"adfadbplt001lssnfkpltdnaload_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'adfadbplt001lssnfkpltdnaload'",
+			"defaultValue": "jdbc:snowflake://yw48356.southeast-asia.azure.snowflakecomputing.com/?user=@{linkedService().snowflake_load_app_svc_name}&db=@{linkedService().snowflake_load_app_name}&warehouse=@{linkedService().snowflake_load_app_wh}&role=@{linkedService().snowflake_load_app_role}"
+		},
+		"adfadbplt001lsakvadbplt001_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://akvadbplt001.vault.azure.net/"
+		},
+		"adfadbplt001lsarsadpprd001_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "conap-dna-prod.c1opccqxcdw2.ap-southeast-1.redshift.amazonaws.com"
+		},
+		"adfadbplt001lsarsadpprd001_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "conapdna"
+		},
+		"adfadbplt001lsarsadpprd001_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "sa-jnj-kdp-local"
+		},
+		"adfadbplt001lsas3adpprd001_properties_typeProperties_accessKeyId": {
+			"type": "object",
+			"defaultValue": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "adfadbplt001lsakvadbplt001",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "adfadbplt001lsas3adpprd001-AccessID"
+			}
+		},
+		"adfadbplt001lsdbtclouddnacore_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://au.dbt.com/"
+		},
+		"adfadbplt001lsdlsadbplt001_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dlsadbplt001.dfs.core.windows.net/"
+		},
+		"adfadbplt001lsprdbitabap_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://prdbitabap.kenvue.com/api/3.17/"
+		},
+		"adfadbsbx001lsazrweksgpw0002_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://azrweksgpw0003.kenvue.com/api.rsc/"
+		},
+		"adfiradbplt002_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/00ab5361-0cd5-44b3-b4df-8f24e00fe1df/resourcegroups/AZR-WEK-rg-adf-adb-001/providers/Microsoft.DataFactory/factories/adfadbplt001/integrationruntimes/adfiradbplt002"
+		},
+		"adfadbplt001mpepdlsadbplt001_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/00ab5361-0cd5-44b3-b4df-8f24e00fe1df/resourceGroups/AZR-WEK-rg-dls-adb-001/providers/Microsoft.Storage/storageAccounts/dlsadbplt001"
+		},
+		"adfadbplt001mpepdlsadbplt001_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"adfadbplt001mpepdlsadbplt002_properties_privateLinkResourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/00ab5361-0cd5-44b3-b4df-8f24e00fe1df/resourceGroups/AZR-WEK-rg-dls-adb-001/providers/Microsoft.Storage/storageAccounts/dlsadbplt002"
+		},
+		"adfadbplt001mpepdlsadbplt002_properties_groupId": {
+			"type": "string",
+			"defaultValue": "dfs"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfadbdev001_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"adfadbplt001lsawswdvsgpw0006_connectionString": {
+						"value": "[parameters('adfadbplt001lsawswdvsgpw0006_connectionString')]"
+					},
+					"adfadbplt001lssnfkpltdnaload_connectionString": {
+						"value": "[parameters('adfadbplt001lssnfkpltdnaload_connectionString')]"
+					},
+					"adfadbplt001lsakvadbplt001_properties_typeProperties_baseUrl": {
+						"value": "[parameters('adfadbplt001lsakvadbplt001_properties_typeProperties_baseUrl')]"
+					},
+					"adfiradbplt002_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('adfiradbplt002_properties_typeProperties_linkedInfo_resourceId')]"
+					},
+					"adfadbplt001lsarsadpprd001_properties_typeProperties_server": {
+						"value": "[parameters('adfadbplt001lsarsadpprd001_properties_typeProperties_server')]"
+					},
+					"adfadbplt001lsarsadpprd001_properties_typeProperties_database": {
+						"value": "[parameters('adfadbplt001lsarsadpprd001_properties_typeProperties_database')]"
+					},
+					"adfadbplt001lsarsadpprd001_properties_typeProperties_username": {
+						"value": "[parameters('adfadbplt001lsarsadpprd001_properties_typeProperties_username')]"
+					},
+					"adfadbplt001lsas3adpprd001_properties_typeProperties_accessKeyId": {
+						"value": "[parameters('adfadbplt001lsas3adpprd001_properties_typeProperties_accessKeyId')]"
+					},
+					"adfadbplt001lsprdbitabap_properties_typeProperties_url": {
+						"value": "[parameters('adfadbplt001lsprdbitabap_properties_typeProperties_url')]"
+					},
+					"adfadbsbx001lsazrweksgpw0002_properties_typeProperties_url": {
+						"value": "[parameters('adfadbsbx001lsazrweksgpw0002_properties_typeProperties_url')]"
+					},
+					"adfadbplt001mpepdlsadbplt001_properties_privateLinkResourceId": {
+						"value": "[parameters('adfadbplt001mpepdlsadbplt001_properties_privateLinkResourceId')]"
+					},
+					"adfadbplt001mpepdlsadbplt001_properties_groupId": {
+						"value": "[parameters('adfadbplt001mpepdlsadbplt001_properties_groupId')]"
+					},
+					"adfadbplt001mpepdlsadbplt002_properties_privateLinkResourceId": {
+						"value": "[parameters('adfadbplt001mpepdlsadbplt002_properties_privateLinkResourceId')]"
+					},
+					"adfadbplt001mpepdlsadbplt002_properties_groupId": {
+						"value": "[parameters('adfadbplt001mpepdlsadbplt002_properties_groupId')]"
+					},
+					"adfadbplt001lsdbtclouddnacore_properties_typeProperties_url": {
+						"value": "[parameters('adfadbplt001lsdbtclouddnacore_properties_typeProperties_url')]"
+					},
+					"adfadbplt001lsdlsadbplt001_properties_typeProperties_url": {
+						"value": "[parameters('adfadbplt001lsdlsadbplt001_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
