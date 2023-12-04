@@ -99,7 +99,7 @@
 							"typeProperties": {
 								"variableName": "snowflakeQuery",
 								"value": {
-									"value": "@concat('truncate table ',pipeline().parameters.Target_Schema,'.',pipeline().parameters.Target_Table,';',\n'COPY INTO ',pipeline().parameters.Target_Schema,'.',pipeline().parameters.Target_Table,\n' FROM ''@', pipeline().parameters.Stage_Schema, '.DEV_CORE_STAGE_S3/',pipeline().parameters.Source_Schema,'_',pipeline().parameters.Source_Table, '''',\n' FILE_FORMAT = ''',pipeline().parameters.Stage_Schema, '.DEV_CORE_CSV_FILEFORMAT'' ',\n';')",
+									"value": "@concat('truncate table ',pipeline().parameters.Target_Schema,'.',pipeline().parameters.Target_Table,';',\n'COPY INTO ',pipeline().parameters.Target_Schema,'.',pipeline().parameters.Target_Table,\n' FROM ''@', pipeline().parameters.Stage_Schema, '.DEV_CORE_STAGE_S3/',pipeline().parameters.Source_Schema,'_',pipeline().parameters.Source_Table, '''/',\n' FILE_FORMAT = ''',pipeline().parameters.Stage_Schema, '.DEV_CORE_CSV_FILEFORMAT'' ',\n';')",
 									"type": "Expression"
 								}
 							}
@@ -523,19 +523,19 @@
 		"parameters": {
 			"Source_Schema": {
 				"type": "string",
-				"defaultValue": "RG_SDL"
+				"defaultValue": "RG_ITG"
 			},
 			"Source_Table": {
 				"type": "string",
-				"defaultValue": "SDL_SAP_ECC_SALES_ORG"
+				"defaultValue": "ITG_PRFT_CTR"
 			},
 			"Target_Schema": {
 				"type": "string",
-				"defaultValue": "SNAPASPSDL_RAW"
+				"defaultValue": "SNAPASPITG_INTEGRATION"
 			},
 			"Target_Table": {
 				"type": "string",
-				"defaultValue": "SDL_SAP_ECC_SALES_ORG"
+				"defaultValue": "ITG_PRFT_CTR"
 			},
 			"IsActive": {
 				"type": "bool",
@@ -551,15 +551,15 @@
 			},
 			"Id": {
 				"type": "int",
-				"defaultValue": 34
+				"defaultValue": 244
 			},
 			"Target_DB": {
 				"type": "string",
-				"defaultValue": "DEV_DNA_LOAD"
+				"defaultValue": "DEV_DNA_CORE"
 			},
 			"Stage_Schema": {
 				"type": "string",
-				"defaultValue": "SNAPASPSDL_RAW"
+				"defaultValue": "UTILITY_RAW"
 			}
 		},
 		"variables": {
