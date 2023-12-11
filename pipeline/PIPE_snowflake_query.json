@@ -22,7 +22,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "COPY INTO SNAPASPWKS_INTEGRATION.WKS_RG_TRAVEL_RETAIL_INVENTORY FROM '@UTILITY_RAW.DEV_CORE_STAGE_S3/RG_WKS_WKS_RG_TRAVEL_RETAIL_INVENTORY_EXCL_SKU' FILE_FORMAT = 'UTILITY_RAW.DEV_CORE_CSV_FILEFORMAT' ;"
+							"text": "Select * from ASPAC_BW.CORE_RAW.BWA_AZOCALDAY00;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
