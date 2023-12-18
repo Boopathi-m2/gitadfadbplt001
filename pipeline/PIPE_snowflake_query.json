@@ -15,14 +15,14 @@
 				},
 				"userProperties": [],
 				"linkedServiceName": {
-					"referenceName": "adfadbplt001lssnfkpltdnacore",
+					"referenceName": "adfadbplt001lssnfkpltdnaload",
 					"type": "LinkedServiceReference"
 				},
 				"typeProperties": {
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "COPY INTO SNAPASPWKS_INTEGRATION.WKS_RG_TRAVEL_RETAIL_INVENTORY FROM '@UTILITY_RAW.DEV_CORE_STAGE_S3/RG_WKS_WKS_RG_TRAVEL_RETAIL_INVENTORY_EXCL_SKU' FILE_FORMAT = 'UTILITY_RAW.DEV_CORE_CSV_FILEFORMAT' ;"
+							"text": "Create or replace FILE FORMAT ASPSDL_RAW.DEV_LOAD_XLSX_FILEFORMAT\r\n  type = 'xlsx'\r\n  skip_header = 2\r\n  NULL_IF=('\\\\N')\r\n  empty_field_as_null = false;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
