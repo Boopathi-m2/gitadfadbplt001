@@ -22,7 +22,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "create or replace stage ASPSDL_RAW.DEV_LOAD_STAGE_ADLS\n storage_integration = DEV_DNA_LOAD_AZURE2_SI\n url = 'azure://dlsadbplt001.dfs.core.windows.net/asp/';\n "
+							"text": "create or replace stage ASPSDL_RAW.DEV_LOAD_STAGE_ADLS\n storage_integration = DEV_DNA_LOAD_AZURE2_SI\n url = 'azure://dlsadbplt001.dfs.core.windows.net/';\n "
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
