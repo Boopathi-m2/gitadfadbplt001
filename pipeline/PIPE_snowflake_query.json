@@ -22,29 +22,10 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "create or replace stage ASPSDL_RAW.DEV_LOAD_STAGE_ADLS\n storage_integration = STCONNECTIVITYTEST001_AZURE_STORAGE_INTEGRATION\n url = 'azure://dlsadbplt001.dfs.core.windows.net/asp/dev/transactional/';"
+							"text": "create or replace stage ASPSDL_RAW.DEV_LOAD_STAGE_ADLS\n storage_integration = DEV_DNA_LOAD_AZURE1_SI\n url = 'azure://dlsadbplt001.dfs.core.windows.net/';"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
-				}
-			},
-			{
-				"name": "Custom1",
-				"type": "Custom",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"referenceObjects": {
-						"linkedServices": [],
-						"datasets": []
-					}
 				}
 			}
 		],
