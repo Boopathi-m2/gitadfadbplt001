@@ -22,7 +22,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "call SHILLA_TEST(['Shilla_202004.csv',ASPSDL_RAW, DEV_LOAD_STAGE_ADLS,'dev/transactional/',sdl_rg_travel_retail_shilla])"
+							"text": "call SHILLA_TEST(['Shilla_202004.csv','ASPSDL_RAW', 'DEV_LOAD_STAGE_ADLS','dev/transactional/','sdl_rg_travel_retail_shilla']);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
