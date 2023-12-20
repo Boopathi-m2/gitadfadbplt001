@@ -22,7 +22,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "desc procedure ASPSDL_RAW.SHILLA_TEST(Param array);"
+							"text": "desc procedure ASPSDL_RAW.SHILLA_TEST(array);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
