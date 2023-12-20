@@ -22,7 +22,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "desc procedure ASPSDL_RAW.SHILLA_TEST(array);"
+							"text": "call ASPSDL_RAW.SHILLA_TEST(['Shilla_202004.csv',ASPSDL_RAW, DEV_LOAD_STAGE_ADLS,'asp/dev/transactional/',sdl_rg_travel_retail_shilla]]);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
