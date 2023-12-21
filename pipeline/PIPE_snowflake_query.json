@@ -22,7 +22,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "create or replace stage ASPSDL_RAW.DEV_LOAD_STAGE_ADLS\r\n storage_integration = DEV_DNA_LOAD_AZURE3_SI\r\n url = 'azure://dlsadbplt001.blob.core.windows.net/asp/';"
+							"text": "call ASPSDL_RAW.SHILLA_TEST(['Shilla_202201.csv','ASPSDL_RAW','DEV_LOAD_STAGE_ADLS','asp/dev/transactional/','sdl_rg_travel_retail_shilla']);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
