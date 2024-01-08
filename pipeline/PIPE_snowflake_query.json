@@ -22,7 +22,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "USE DATABASE DEV_DNA_LOAD;\r\nUSE SCHEMA ASPSDL_RAW;\r\ncall ASPSDL_RAW.SHILLA_TEST(['Shilla_202204.csv','ASPSDL_RAW','DEV_LOAD_STAGE_ADLS','asp/dev/transactional/','sdl_rg_travel_retail_shilla']);"
+							"text": "USE DATABASE DEV_DNA_LOAD;\r\nUSE SCHEMA META_RAW;\r\nINSERT INTO PARAMETERS (PARAMETER_GROUP_ID,PARAMETER_GROUP_NAME,PARAMETER_NAME,PARAMETER_VALUE,IS_SENSITIVE,IS_ACTIVE) VALUES (2,'rg_travel_retail_dfs_group','source_extn','xlsx',FALSE,TRUE);\r\nINSERT INTO PARAMETERS (PARAMETER_GROUP_ID,PARAMETER_GROUP_NAME,PARAMETER_NAME,PARAMETER_VALUE,IS_SENSITIVE,IS_ACTIVE) VALUES (1,'rg_travel_retail_shilla_group','source_extn','xlsx',FALSE,TRUE);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
