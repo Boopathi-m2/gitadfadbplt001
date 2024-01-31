@@ -15,14 +15,14 @@
 				},
 				"userProperties": [],
 				"linkedServiceName": {
-					"referenceName": "adfadbplt001lssnfkpltdnaload",
+					"referenceName": "adfadbplt001lssnfkpltdnacore",
 					"type": "LinkedServiceReference"
 				},
 				"typeProperties": {
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "USE DATABASE DEV_DNA_LOAD;\r\nUSE SCHEMA META_RAW;\r\nINSERT INTO PARAMETERS (PARAMETER_GROUP_ID,PARAMETER_GROUP_NAME,PARAMETER_NAME,PARAMETER_VALUE,IS_SENSITIVE,IS_ACTIVE) VALUES (2,'rg_travel_retail_dfs_group','source_extn','xlsx',FALSE,TRUE);\r\nINSERT INTO PARAMETERS (PARAMETER_GROUP_ID,PARAMETER_GROUP_NAME,PARAMETER_NAME,PARAMETER_VALUE,IS_SENSITIVE,IS_ACTIVE) VALUES (1,'rg_travel_retail_shilla_group','source_extn','xlsx',FALSE,TRUE);"
+							"text": "CREATE OR REPLACE TABLE DEV_DNA_CORE.MYSITG_INTEGRATION.itg_my_gt_outlet_exclusion CLONE DEV_DNA_CORE.SNAPOSEITG_INTEGRATION.itg_my_gt_outlet_exclusion;\r\nCREATE OR REPLACE TABLE DEV_DNA_CORE.MYSITG_INTEGRATION.itg_my_sellout_sales_fact CLONE DEV_DNA_CORE.SNAPOSEITG_INTEGRATION.itg_my_sellout_sales_fact;\r\nCREATE OR REPLACE TABLE DEV_DNA_CORE.MYSITG_INTEGRATION.itg_my_trgts CLONE DEV_DNA_CORE.SNAPOSEITG_INTEGRATION.itg_my_trgts;\r\nCREATE OR REPLACE TABLE DEV_DNA_CORE.MYSITG_INTEGRATION.itg_my_dstrbtrr_dim CLONE DEV_DNA_CORE.SNAPOSEITG_INTEGRATION.itg_my_dstrbtrr_dim;\r\nCREATE OR REPLACE TABLE DEV_DNA_CORE.MYSITG_INTEGRATION.itg_my_material_dim CLONE DEV_DNA_CORE.SNAPOSEITG_INTEGRATION.itg_my_material_dim;\r\nCREATE OR REPLACE TABLE DEV_DNA_CORE.MYSITG_INTEGRATION.itg_my_customer_dim CLONE DEV_DNA_CORE.SNAPOSEITG_INTEGRATION.itg_my_customer_dim;\r\nCREATE OR REPLACE TABLE DEV_DNA_CORE.MYSITG_INTEGRATION.itg_my_sellout_sales_fact CLONE DEV_DNA_CORE.SNAPOSEITG_INTEGRATION.itg_my_sellout_sales_fact;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
