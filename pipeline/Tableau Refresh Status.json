@@ -591,7 +591,7 @@
 							"type": "Fail",
 							"dependsOn": [
 								{
-									"activity": "Send Notifications",
+									"activity": "error response after refresh",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -606,47 +606,6 @@
 								"errorCode": {
 									"value": "@variables('finishCode')",
 									"type": "Expression"
-								}
-							}
-						},
-						{
-							"name": "Send Notifications",
-							"type": "ExecutePipeline",
-							"dependsOn": [
-								{
-									"activity": "error response after refresh",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"policy": {
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "NotifiyTeamsChannelPipeline",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true,
-								"parameters": {
-									"runId": {
-										"value": "@pipeline().RunId",
-										"type": "Expression"
-									},
-									"pipelineName": {
-										"value": "@pipeline().Pipeline",
-										"type": "Expression"
-									},
-									"triggerTime": {
-										"value": "@convertTimeZone(pipeline().TriggerTime,'UTC','Singapore Standard Time')",
-										"type": "Expression"
-									},
-									"status": {
-										"value": "Tableau Refresh Failed for @{pipeline().parameters.tableauSourceName}",
-										"type": "Expression"
-									}
 								}
 							}
 						}
@@ -732,6 +691,68 @@
 						},
 						"phase_id": {
 							"value": "@pipeline().parameters.phase_id",
+							"type": "Expression"
+						}
+					}
+				}
+			},
+			{
+				"name": "Send Notifications",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "If Refresh Successful",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "NotifiyTeamsChannelPipeline",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true,
+					"parameters": {
+						"runId": {
+							"value": "@pipeline().RunId",
+							"type": "Expression"
+						},
+						"pipelineName": {
+							"value": "@pipeline().Pipeline",
+							"type": "Expression"
+						},
+						"triggerTime": {
+							"value": "@convertTimeZone(pipeline().TriggerTime,'UTC','Singapore Standard Time')",
+							"type": "Expression"
+						},
+						"status": {
+							"value": "Tableau Refresh Failed for @{pipeline().parameters.tableauSourceName}",
+							"type": "Expression"
+						},
+						"message": "FAIL",
+						"detailedDescription": {
+							"value": "Tableau Refresh Failed for @{pipeline().parameters.tableauSourceName}",
+							"type": "Expression"
+						},
+						"processId": {
+							"value": "@pipeline().parameters.process_id",
+							"type": "Expression"
+						},
+						"phaseId": {
+							"value": "@pipeline().parameters.phase_id",
+							"type": "Expression"
+						},
+						"usecaseId": {
+							"value": "@pipeline().parameters.usecase_id",
+							"type": "Expression"
+						},
+						"category": {
+							"value": "@pipeline().parameters.category",
 							"type": "Expression"
 						}
 					}
