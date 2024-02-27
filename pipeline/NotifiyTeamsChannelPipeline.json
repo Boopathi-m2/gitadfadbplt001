@@ -105,12 +105,6 @@
 			}
 		],
 		"parameters": {
-			"subscription": {
-				"type": "string"
-			},
-			"resourceGroup": {
-				"type": "string"
-			},
 			"runId": {
 				"type": "string"
 			},
@@ -124,12 +118,6 @@
 				"type": "string"
 			},
 			"message": {
-				"type": "string"
-			},
-			"executionEndTime": {
-				"type": "string"
-			},
-			"runDuration": {
 				"type": "string"
 			},
 			"supportTeamWebhookUrl": {
