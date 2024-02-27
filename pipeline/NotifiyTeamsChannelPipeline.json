@@ -20,11 +20,11 @@
 				}
 			},
 			{
-				"name": "Invoke Teams Webhook URL",
+				"name": "Invoke Teams Webhook URL for Support",
 				"type": "WebActivity",
 				"dependsOn": [
 					{
-						"activity": "Set JSON Schema",
+						"activity": "Send Notification to Business",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -41,7 +41,7 @@
 				"typeProperties": {
 					"method": "POST",
 					"url": {
-						"value": "@pipeline().parameters.teamWebhookUrl",
+						"value": "@pipeline().parameters.supportTeamWebhookUrl",
 						"type": "Expression"
 					},
 					"connectVia": {
@@ -52,6 +52,55 @@
 						"value": "@json(variables('messageCard'))",
 						"type": "Expression"
 					}
+				}
+			},
+			{
+				"name": "Send Notification to Business",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Set JSON Schema",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@if(equals(pipeline().parameters.businessTeamWebhookUrl, null), false, true)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Invoke Teams Webhook URL for Business",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"url": {
+									"value": "@pipeline().parameters.businessTeamWebhookUrl",
+									"type": "Expression"
+								},
+								"connectVia": {
+									"referenceName": "adfiradbplt001",
+									"type": "IntegrationRuntimeReference"
+								},
+								"body": {
+									"value": "@json(variables('messageCard'))",
+									"type": "Expression"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
@@ -83,7 +132,7 @@
 			"runDuration": {
 				"type": "string"
 			},
-			"teamWebhookUrl": {
+			"supportTeamWebhookUrl": {
 				"type": "string",
 				"defaultValue": "https://kenvue.webhook.office.com/webhookb2/80341085-ca5b-4cd4-9299-dd01c39e50cd@7ba64ac2-8a2b-417e-9b8f-fcf8238f2a56/IncomingWebhook/6adf26836f394d60ab4c7c0eea28e113/b96e6ec8-5d95-42c8-9ba2-44a3024dd2ac"
 			},
@@ -100,6 +149,9 @@
 				"type": "string"
 			},
 			"category": {
+				"type": "string"
+			},
+			"businessTeamWebhookUrl": {
 				"type": "string"
 			}
 		},
