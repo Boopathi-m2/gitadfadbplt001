@@ -642,6 +642,10 @@
 									"triggerTime": {
 										"value": "@convertTimeZone(pipeline().TriggerTime,'UTC','Singapore Standard Time')",
 										"type": "Expression"
+									},
+									"status": {
+										"value": "Tableau Refresh Failed for @{pipeline().parameters.tableauSourceName}",
+										"type": "Expression"
 									}
 								}
 							}
