@@ -1,0 +1,157 @@
+{
+	"name": "Tableau_New",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get LastModifiedTokenFile",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set variable2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "TableauJsonResponse1",
+						"type": "DatasetReference",
+						"parameters": {
+							"tempContainer": "asp",
+							"tempDirectory": "dev/tableau",
+							"tempFileName": "dev_tableauResponseSignIn.json"
+						}
+					},
+					"fieldList": [],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"recursive": true,
+						"modifiedDatetimeStart": {
+							"value": "@addhours(utcnow(), -4)",
+							"type": "Expression"
+						},
+						"modifiedDatetimeEnd": {
+							"value": "@utcnow()",
+							"type": "Expression"
+						},
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "JsonReadSettings"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "utcnow",
+					"value": {
+						"value": "@utcnow()",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "timeMinus4",
+					"value": {
+						"value": "@getPastTime(4,'Hour')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"category": {
+				"type": "string",
+				"defaultValue": "test REFRESH"
+			},
+			"usecase_id": {
+				"type": "int",
+				"defaultValue": 7
+			},
+			"phase_id": {
+				"type": "int",
+				"defaultValue": 3
+			},
+			"sequence_id": {
+				"type": "int",
+				"defaultValue": 1
+			},
+			"process_id": {
+				"type": "int",
+				"defaultValue": 179
+			}
+		},
+		"variables": {
+			"output": {
+				"type": "String"
+			},
+			"token": {
+				"type": "String"
+			},
+			"run_status": {
+				"type": "Integer",
+				"defaultValue": 0
+			},
+			"refreshType": {
+				"type": "String"
+			},
+			"parentFolder": {
+				"type": "String"
+			},
+			"generateToken": {
+				"type": "Boolean",
+				"defaultValue": true
+			},
+			"lastModTimePlus4Hours": {
+				"type": "String"
+			},
+			"utcnow": {
+				"type": "String"
+			},
+			"isCritical": {
+				"type": "Boolean",
+				"defaultValue": true
+			},
+			"timeMinus4": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Consumption/Consumption Systems"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-11-23T12:26:48Z"
+	}
+}
