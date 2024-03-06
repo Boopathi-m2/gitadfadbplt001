@@ -29,24 +29,17 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "TableauJsonResponse1",
-						"type": "DatasetReference",
-						"parameters": {
-							"tempContainer": "asp",
-							"tempDirectory": "dev/tableau",
-							"tempFileName": "dev_tableauResponseSignIn.json"
-						}
+						"referenceName": "test_Json1",
+						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems"
+					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
 						"recursive": true,
 						"modifiedDatetimeStart": {
-							"value": "@addhours(utcnow(), -4)",
-							"type": "Expression"
-						},
-						"modifiedDatetimeEnd": {
-							"value": "@utcnow()",
+							"value": "@addminutes(utcnow(), -5)",
 							"type": "Expression"
 						},
 						"enablePartitionDiscovery": false
@@ -85,7 +78,7 @@
 				"typeProperties": {
 					"variableName": "timeMinus4",
 					"value": {
-						"value": "@getPastTime(4,'Hour')",
+						"value": "@addminutes(utcnow(), -4)",
 						"type": "Expression"
 					}
 				}
