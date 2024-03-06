@@ -1,0 +1,107 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable11",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "time2",
+					"value": {
+						"value": "@mul(rand(3,10),rand(10,15))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "time1",
+					"value": {
+						"value": "@mul(mul(rand(5,9),rand(0,3)),rand(0,2))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable11_copy1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "time4",
+					"value": {
+						"value": "@mul(rand(3,10),rand(10,15))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1_copy1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "time3",
+					"value": {
+						"value": "@mul(mul(rand(5,9),rand(0,3)),rand(0,2))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"time1": {
+				"type": "Integer"
+			},
+			"time2": {
+				"type": "Integer"
+			},
+			"time3": {
+				"type": "Integer"
+			},
+			"time4": {
+				"type": "Integer"
+			}
+		},
+		"folder": {
+			"name": "Miscellaneous Pipelines"
+		},
+		"annotations": []
+	}
+}
