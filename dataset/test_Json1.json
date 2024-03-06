@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "dev__tableauResponseSignIn.json",
 				"folderPath": "dev",
 				"fileSystem": "asp"
 			}
