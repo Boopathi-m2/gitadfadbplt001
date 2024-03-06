@@ -38,7 +38,7 @@
 				"typeProperties": {
 					"variableName": "time1",
 					"value": {
-						"value": "@mul(mul(rand(5,9),rand(0,3)),rand(0,2))",
+						"value": "@mul(mul(rand(2,7),rand(1,5)),rand(1,4))",
 						"type": "Expression"
 					}
 				}
@@ -79,7 +79,7 @@
 				"typeProperties": {
 					"variableName": "time3",
 					"value": {
-						"value": "@mul(mul(rand(5,9),rand(0,3)),rand(0,2))",
+						"value": "@mul(mul(rand(2,7),rand(1,5)),rand(1,4))",
 						"type": "Expression"
 					}
 				}
