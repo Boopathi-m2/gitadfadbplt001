@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileName": "dev_tableauResponseSignIn.json",
-				"folderPath": "dev",
+				"folderPath": "dev/tableau",
 				"fileSystem": "asp"
 			}
 		},
