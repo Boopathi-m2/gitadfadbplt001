@@ -360,8 +360,6 @@
 						{
 							"name": "fail this pipeline",
 							"type": "Fail",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "audit failure on loop",
