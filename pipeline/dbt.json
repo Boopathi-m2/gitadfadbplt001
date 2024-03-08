@@ -1132,6 +1132,8 @@
 			{
 				"name": "ForEveryModel",
 				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ModelName Array",
@@ -1240,6 +1242,8 @@
 			{
 				"name": "If Ingestion Error",
 				"type": "IfCondition",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEveryModel",
@@ -1290,6 +1294,8 @@
 			{
 				"name": "ModelName Array",
 				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Switch success or failure",
@@ -1314,6 +1320,8 @@
 			{
 				"name": "Switch Build or DQ check failed",
 				"type": "Switch",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "If Ingestion Error",
