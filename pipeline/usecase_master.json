@@ -63,6 +63,9 @@
 							"name": "run phase master",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
 							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
@@ -89,6 +92,9 @@
 				"name": "audit start",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
+				"policy": {
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -136,6 +142,9 @@
 						]
 					}
 				],
+				"policy": {
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -183,6 +192,9 @@
 						]
 					}
 				],
+				"policy": {
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -230,6 +242,9 @@
 						]
 					}
 				],
+				"policy": {
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -277,6 +292,9 @@
 						]
 					}
 				],
+				"policy": {
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -322,6 +340,9 @@
 						]
 					}
 				],
+				"policy": {
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -336,7 +357,7 @@
 							"type": "Expression"
 						},
 						"error_message": {
-							"value": "@activity('get usecases').error?.message",
+							"value": "@activity('get usecases')?.error?.message",
 							"type": "Expression"
 						},
 						"run_id": {
@@ -349,7 +370,7 @@
 						},
 						"phase_id": 0,
 						"error_code": {
-							"value": "@activity('run phase master').error?.errorCode",
+							"value": "@activity('run phase master')?.error?.errorCode",
 							"type": "Expression"
 						},
 						"job_id": 0

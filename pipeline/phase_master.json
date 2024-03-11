@@ -621,7 +621,7 @@
 										"type": "Expression"
 									},
 									"error_message": {
-										"value": "@activity('Decide phase').error?.message",
+										"value": "@activity('Decide phase')?.error?.message",
 										"type": "Expression"
 									},
 									"run_id": {
@@ -634,7 +634,7 @@
 									},
 									"phase_id": 0,
 									"error_code": {
-										"value": "@activity('Decide phase').error?.errorCode",
+										"value": "@activity('Decide phase')?.error?.errorCode",
 										"type": "Expression"
 									},
 									"job_id": 0

@@ -625,7 +625,7 @@
 										"type": "Expression"
 									},
 									"error_message": {
-										"value": "@activity('read usecases').output.message",
+										"value": "@activity('read usecases')?.output?.message",
 										"type": "Expression"
 									},
 									"run_id": {
@@ -638,7 +638,7 @@
 									},
 									"phase_id": 0,
 									"error_code": {
-										"value": "@activity('read usecases').output.errorCode",
+										"value": "@activity('read usecases')?.output?.errorCode",
 										"type": "Expression"
 									},
 									"job_id": 0
