@@ -391,8 +391,6 @@
 			{
 				"name": "error log 1",
 				"type": "ExecutePipeline",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "audit fail on lookup",
