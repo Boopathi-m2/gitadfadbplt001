@@ -332,6 +332,8 @@
 			{
 				"name": "error log 2",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "audit fail on for loop",

@@ -605,8 +605,10 @@
 							}
 						},
 						{
-							"name": "eror log 4",
+							"name": "error log 4",
 							"type": "ExecutePipeline",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [],
 							"policy": {
 								"secureInput": false
@@ -625,7 +627,7 @@
 										"type": "Expression"
 									},
 									"error_message": {
-										"value": "@activity('read usecases')?.output?.message",
+										"value": "@concat(pipeline().Pipeline,' pipeline has failed for use case ', string(pipeline().parameters.category))",
 										"type": "Expression"
 									},
 									"run_id": {
@@ -652,7 +654,7 @@
 							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
-									"activity": "eror log 4",
+									"activity": "error log 4",
 									"dependencyConditions": [
 										"Succeeded"
 									]
