@@ -650,8 +650,6 @@
 						{
 							"name": "fail this pipeline",
 							"type": "Fail",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "error log 4",
