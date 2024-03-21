@@ -1,11 +1,12 @@
 
 ---version History--------------------------------
--- 02/02/24 	Thanish		Initial Version
+-- 02/02/24 Thanish		Initial Version
 -- 01/03/24	Srihari		Added Header logic to Handle files with '|' Delimiter
 -- 05/03/24	Srihari		Added Exception handling
 -- 06/03/24	Thanish		Added file name logic to Handle Thailand files
 -- 09/03/24 Srihari     Added Logic to handle regular expressions in name and header
 -- 12/03/24 Thanish		Added Logic to Handle NTUC Multi xlsx file header
+-- 21/03/24 Kamil       Added Logic to ignore invalid characters in header validation
 
 CREATE OR REPLACE PROCEDURE DEV_DNA_LOAD.ASPSDL_RAW.FILE_VALIDATION("PARAM" ARRAY)
 RETURNS VARCHAR(16777216)
@@ -114,7 +115,7 @@ def main(session: snowpark.Session,Param):
             else:
                 file_name= CURRENT_FILE.replace("xlsx","csv")
                 file_name = file_name.replace("(", "").replace(")", "").replace(" ","_")
-                df = session.read.option("INFER_SCHEMA", True).option("field_optionally_enclosed_by", "\\"").csv("@"+stage_name+"/"+temp_stage_path+"/"+file_name)
+                df = session.read.option("INFER_SCHEMA", True).option("field_optionally_enclosed_by", "\\"").option("REPLACE_INVALID_CHARACTERS", True).csv("@"+stage_name+"/"+temp_stage_path+"/"+file_name)
             
                 df_pandas=df.to_pandas()
                 header=df_pandas.iloc[int(file_header_row_num)].tolist()
