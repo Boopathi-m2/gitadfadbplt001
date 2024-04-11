@@ -226,21 +226,7 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
-							"metadata": [
-								{
-									"name": "container",
-									"value": ""
-								},
-								{
-									"name": "path",
-									"value": ""
-								},
-								{
-									"name": "file",
-									"value": ""
-								}
-							]
+							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -267,7 +253,12 @@
 				"outputs": [
 					{
 						"referenceName": "sqlserver_output",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container": "sql_server",
+							"path": "test",
+							"file": "account.csv"
+						}
 					}
 				]
 			}
