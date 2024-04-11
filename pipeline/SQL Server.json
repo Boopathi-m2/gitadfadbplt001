@@ -255,8 +255,8 @@
 						"referenceName": "sqlserver_output",
 						"type": "DatasetReference",
 						"parameters": {
-							"container": "sql_server",
-							"path": "test",
+							"container": "aus",
+							"path": "sql_server/test",
 							"file": "acconut"
 						}
 					}
