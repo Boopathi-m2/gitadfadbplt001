@@ -1,0 +1,12 @@
+{
+	"name": "SqlServer_read",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adfadbplt001lsawswdvsgpw0006",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
