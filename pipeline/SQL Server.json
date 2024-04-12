@@ -219,7 +219,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "select * from dbo.account",
+						"sqlReaderQuery": "select ac_shortname,ac_longname,ac_attribute,ac_nielsencode from dbo.account",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -255,9 +255,9 @@
 						"referenceName": "sqlserver_output",
 						"type": "DatasetReference",
 						"parameters": {
-							"container": "aus",
-							"path": "sql_server/test",
-							"file": "acconut"
+							"container": "pac",
+							"path": "dev/sql_server/test",
+							"file": "account"
 						}
 					}
 				]
