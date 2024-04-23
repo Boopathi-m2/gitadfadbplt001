@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "SELECT sku_apncode, CONVERT(numeric(18,0), nullif(sku_apncode,'')) AS APN , sku_stockcode\n                 FROM dbo.sku\n                 WHERE  sku_apncode <> '' ;",
+						"sqlReaderQuery": "SELECT ac_code, ac_attribute, sku_stockcode, sku_attribute, sku_profitcentre, est_date,\n       (SUM(est_estimate)- SUM(est_promotional)) as sum_est_normal, SUM(est_promotional) as sum_est_promotional,\n       SUM(est_estimate) as sum_est_estimate\nFROM account\nINNER JOIN estimate ON est_accountrowid = ac_rowid\nINNER JOIN sku ON est_skurowid = sku_rowid\nWHERE est_date >= DATEADD(MONTH, -42, getdate())\nGROUP BY ac_code, ac_attribute, sku_stockcode, sku_attribute, sku_profitcentre, est_date;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
