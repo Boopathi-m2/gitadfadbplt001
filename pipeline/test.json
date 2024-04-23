@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "SELECT ac_code, ac_attribute, sku_stockcode, sku_attribute, sku_profitcentre, est_date,\n       (SUM(est_estimate)- SUM(est_promotional)) as sum_est_normal, SUM(est_promotional) as sum_est_promotional,\n       SUM(est_estimate) as sum_est_estimate\nFROM account\nINNER JOIN estimate ON est_accountrowid = ac_rowid\nINNER JOIN sku ON est_skurowid = sku_rowid\nWHERE est_date >= DATEADD(MONTH, -42, getdate())\nGROUP BY ac_code, ac_attribute, sku_stockcode, sku_attribute, sku_profitcentre, est_date;",
+						"sqlReaderQuery": "SELECT sku_stockcode, lp_price, lp_cost, lp_salestax, lp_startdate, lp_stopdate,  sku_uompersaleable, lp_salesorg\n                 FROM listprice\n                 INNER JOIN sku ON lp_skurowid = sku_rowid;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -55,7 +55,7 @@
 						"parameters": {
 							"container": "pac",
 							"path": "dev/sql_server/test/",
-							"file": "sku.csv"
+							"file": "J_Pac_Px_ListPrice_Edw.csv"
 						}
 					}
 				]
