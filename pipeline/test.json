@@ -15,21 +15,47 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT sku_apncode, CONVERT(numeric(18,0), nullif(sku_apncode,'')) AS APN , sku_stockcode\n                 FROM dbo.sku\n                 WHERE  sku_apncode <> '' ;",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
 					"sink": {
-						"type": "BinarySink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
+				"inputs": [
+					{
+						"referenceName": "sql_server_awswfqsgpw",
+						"type": "DatasetReference"
+					}
+				],
 				"outputs": [
 					{
-						"referenceName": "adls_sink_binary",
+						"referenceName": "sql_server_sink",
 						"type": "DatasetReference",
 						"parameters": {
-							"adls_container": "pac",
-							"adls_path": "dev/sql_server/test/"
+							"container": "pac",
+							"path": "dev/sql_server/test/",
+							"file": "sku.csv"
 						}
 					}
 				]
