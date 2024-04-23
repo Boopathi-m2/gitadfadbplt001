@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "select distributor_id,sales_order_number,sales_order_date,type,customer_code,distributor_wh_id,sap_material_id,product_code,product_ean_code,product_description,gross_item_price,quantity,uom,quantity_in_pieces,quantity_after_conversion,sub_total_1,discount,sub_total_2,bottom_line_discount,total_amt_after_tax,total_amt_before_tax,sales_employee,crt_dttm as insert_dt,'N' as processedtomds\nfrom os_sdl.sdl_my_daily_sellout_sales_fact_mds_sync",
+						"sqlReaderQuery": "SELECT account.ac_shortname,\n       account.ac_longname,\n       account.ac_code,\n       account.ac_attribute,\n       scan.sc_date,\n       scan.sc_scanvolume,\n       scan.sc_scanvalue,\n       scan.sc_scanprice,\n       sku.sku_shortname,\n       sku.sku_longname,\n       sku.sku_tuncode,\n       sku.sku_apncode,\n       sku.sku_stockcode\nFROM account account,\n     scan scan,\n     sku sku\nWHERE scan.sc_skurowid = sku.sku_rowid\nAND   account.ac_rowid = scan.sc_accountrowid\nAND   sc_date >=DATEADD(MONTH, -18, getdate()) ;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -55,7 +55,7 @@
 						"parameters": {
 							"container": "pac",
 							"path": "dev/sql_server/test/",
-							"file": "J_Pac_Px_Master_Edw.csv"
+							"file": "J_Pac_Px_Scan_Fact_Edw.csv"
 						}
 					}
 				]
