@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "SELECT sku_apncode, CONVERT(numeric(18,0), nullif(sku_apncode,'')) AS APN , sku_stockcode\n                 FROM dbo.sku\n                 WHERE  sku_apncode <> '' ;",
+						"sqlReaderQuery": "SELECT sku_stockcode, lp_price, lp_cost, lp_salestax, lp_startdate, lp_stopdate,  sku_uompersaleable, lp_salesorg\n                 FROM [listprice]\n                 INNER JOIN [sku] ON lp_skurowid = sku_rowid;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -55,7 +55,7 @@
 						"parameters": {
 							"container": "pac",
 							"path": "dev/sql_server/test/",
-							"file": "AU_SDL.SDL_PX_APN.csv"
+							"file": "SDL_PX_LISTPRICE.csv"
 						}
 					}
 				]
