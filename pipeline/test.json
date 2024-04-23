@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "SELECT  sku_longname, sku_stockcode, sku_uom, sku_uompersaleable, sku_packspercase\n FROM sku",
+						"sqlReaderQuery": "SELECT sku_apncode, CONVERT(numeric(18,0), nullif(sku_apncode,'')) AS APN , sku_stockcode\n                 FROM dbo.sku\n                 WHERE  sku_apncode <> '' ;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -55,7 +55,7 @@
 						"parameters": {
 							"container": "pac",
 							"path": "dev/sql_server/test/",
-							"file": "J_Pac_Px_UOM_Edw.csv"
+							"file": "AU_SDL.SDL_PX_APN.csv"
 						}
 					}
 				]
