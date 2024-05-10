@@ -110,8 +110,6 @@
 			{
 				"name": "converttocsv sheetwise",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -153,13 +151,14 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "adls_srcexcel_sheetname",
+						"referenceName": "adls_srcexcel",
 						"type": "DatasetReference",
 						"parameters": {
-							"src_path": "dev/transactional/DFS",
-							"src_filename": "Hainan Vendor Sales Report for Asian.xlsx",
-							"src_sheetname": "Hainan Vendor Sales Report for ",
-							"src_container": "asp"
+							"src_path": "dev/coupang_premium/transaction",
+							"src_filename": "master-product-ranking-A00165277-weekly-20210904_10.xlsx",
+							"src_sheetindex": 0,
+							"src_container": "kor",
+							"src_startRange": "A1"
 						}
 					}
 				],
@@ -168,8 +167,8 @@
 						"referenceName": "csv",
 						"type": "DatasetReference",
 						"parameters": {
-							"target_path": "dev/transactional/DFS",
-							"target_filename": "Hainan Vendor Sales Report for Asian.xlsx",
+							"target_path": "dev/coupang_premium/transaction",
+							"target_filename": "master-product-ranking-A00165277-weekly-20210904_10.xlsx",
 							"target_container": "asp"
 						}
 					}
