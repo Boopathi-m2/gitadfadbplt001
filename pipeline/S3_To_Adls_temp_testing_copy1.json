@@ -155,8 +155,8 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"src_path": "dev/coupang_premium/transaction",
-							"src_filename": "master-product-ranking-A00165277-weekly-20210904_10.xlsx",
-							"src_sheetindex": 0,
+							"src_filename": "search-keyword-by-brand-A00165277-monthly-20211031_10_1.xlsx",
+							"src_sheetindex": 1,
 							"src_container": "kor",
 							"src_startRange": "A1"
 						}
@@ -168,8 +168,8 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"target_path": "dev/coupang_premium/transaction",
-							"target_filename": "master-product-ranking-A00165277-weekly-20210904_10.xlsx",
-							"target_container": "asp"
+							"target_filename": "search-keyword-by-brand-A00165277-monthly-20211031_10_1.csv",
+							"target_container": "kor"
 						}
 					}
 				]
