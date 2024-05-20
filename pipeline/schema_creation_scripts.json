@@ -1,0 +1,37 @@
+{
+	"name": "schema_creation_scripts",
+	"properties": {
+		"activities": [
+			{
+				"name": "schema_creation",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "adfadbplt001lssnfkpltdnacore",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "USE ROLE DEV_DNA_CORE_APPADMIN_FR;\r\nUSE WAREHOUSE DEV_DNA_CORE_APPADMIN_WH;\r\nCALL DEV_DNA_CORE.CORE_ADMIN.ADD_INTEGRATION_SCHEMA_SP('SNAPCHNEDW');\r\n\r\nCALL DEV_DNA_CORE.CORE_ADMIN.ADD_INTEGRATION_SCHEMA_SP('SNAPCHNITG');\r\nCALL DEV_DNA_CORE.CORE_ADMIN.ADD_INTEGRATION_SCHEMA_SP('SNAPCHNWKS');\r\n "
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "Miscellaneous Pipelines"
+		},
+		"annotations": []
+	}
+}
