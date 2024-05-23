@@ -167,9 +167,9 @@
 						"referenceName": "csv",
 						"type": "DatasetReference",
 						"parameters": {
-							"target_path": "dev/transactional/DFS",
-							"target_filename": "Hainan Vendor Sales Report for Asian.xlsx",
-							"target_container": "asp"
+							"target_path": "dev/coupang_premium/transaction/search_keyword_by_category/",
+							"target_filename": "search-keyword-by-category-A00165277-daily-20211018_10.csv",
+							"target_container": "kor"
 						}
 					}
 				]
