@@ -155,7 +155,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"src_path": "dev/coupang_premium/transaction/brandranking/",
-							"src_filename": "BrandRanking-daily-20211106.xlsx",
+							"src_filename": "BrandRanking-monthly-20211031.xlsx",
 							"src_sheetindex": 0,
 							"src_container": "kor",
 							"src_startRange": "A1"
@@ -168,7 +168,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"target_path": "dev/coupang_premium/transaction/brandranking/",
-							"target_filename": "BrandRanking-daily-20211106.csv",
+							"target_filename": "BrandRanking-monthly-20211031.csv",
 							"target_container": "kor"
 						}
 					}
