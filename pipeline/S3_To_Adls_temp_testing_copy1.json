@@ -155,7 +155,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"src_path": "dev/coupang_premium/transaction/search_keyword_by_product/",
-							"src_filename": "search-keyword-by-product-A00165277-daily-20211018_12_1.xlsx",
+							"src_filename": "search-keyword-by-product-A00165277-weekly-20211030_10_1.xlsx",
 							"src_sheetindex": 0,
 							"src_container": "kor",
 							"src_startRange": "A1"
@@ -168,7 +168,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"target_path": "dev/coupang_premium/transaction/search_keyword_by_product/",
-							"target_filename": "search-keyword-by-product-A00165277-daily-20211018_12_1.csv",
+							"target_filename": "search-keyword-by-product-A00165277-weekly-20211030_10_1.csv",
 							"target_container": "kor"
 						}
 					}
