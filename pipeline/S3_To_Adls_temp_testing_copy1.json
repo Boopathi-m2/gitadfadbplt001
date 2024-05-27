@@ -154,8 +154,8 @@
 						"referenceName": "adls_srcexcel",
 						"type": "DatasetReference",
 						"parameters": {
-							"src_path": "dev/coupang_premium/transaction/brandranking/",
-							"src_filename": "BrandRanking-weekly-20211106.xlsx",
+							"src_path": "dev/coupang_premium/transaction/search_keyword_by_product/",
+							"src_filename": "search-keyword-by-product-A00165277-daily-20211018_12_1.xlsx",
 							"src_sheetindex": 0,
 							"src_container": "kor",
 							"src_startRange": "A1"
@@ -167,8 +167,8 @@
 						"referenceName": "csv",
 						"type": "DatasetReference",
 						"parameters": {
-							"target_path": "dev/coupang_premium/transaction/brandranking/",
-							"target_filename": "BrandRanking-weekly-20211106.csv",
+							"target_path": "dev/coupang_premium/transaction/search_keyword_by_product/",
+							"target_filename": "search-keyword-by-product-A00165277-daily-20211018_12_1.csv",
 							"target_container": "kor"
 						}
 					}
