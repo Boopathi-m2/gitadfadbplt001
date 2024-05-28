@@ -164,7 +164,7 @@
 										"source": {
 											"type": "SnowflakeSource",
 											"query": {
-												"value": "CALL @{pipeline().parameters.parameters.value[0].sp_name} (['@{variables('paramfilename')}','@{pipeline().parameters.parameters.value[0].snowflake_stage\n}','@{if(equals(pipeline().globalParameters.environment, 'prod'),'prd', pipeline().globalParameters.environment)}/@{pipeline().parameters.Parameters.value[0].folder_path}','@{pipeline().parameters.parameters.value[0].target_table\n}']);\n",
+												"value": "CALL @{pipeline().parameters.parameters.value[0].sp_name} (['@{variables('paramfilename')}','@{pipeline().parameters.parameters.value[0].snowflake_stage\n}','@{if(equals(pipeline().globalParameters.environment, 'prod'),'dev', pipeline().globalParameters.environment)}/@{pipeline().parameters.Parameters.value[0].folder_path}','@{pipeline().parameters.parameters.value[0].target_table\n}']);\n",
 												"type": "Expression"
 											},
 											"exportSettings": {
