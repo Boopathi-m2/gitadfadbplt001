@@ -121,11 +121,14 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "ExcelSource",
+						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"sink": {
@@ -151,14 +154,12 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "adls_srcexcel",
+						"referenceName": "csv",
 						"type": "DatasetReference",
 						"parameters": {
-							"src_path": "dev/pos/gs-super/",
-							"src_filename": "KR_POS_GS_Super_20201228_20201229093149.MKJNJ02",
-							"src_sheetindex": 0,
-							"src_container": "kor",
-							"src_startRange": "A1"
+							"target_path": "dev/pos/gs-super/",
+							"target_filename": "KR_POS_GS_Super_20201228_20201229093149.MKJNJ02",
+							"target_container": "kor"
 						}
 					}
 				],
