@@ -154,8 +154,8 @@
 						"referenceName": "adls_srcexcel",
 						"type": "DatasetReference",
 						"parameters": {
-							"src_path": "dev/coupang_premium/transaction/customer_brand_trend/",
-							"src_filename": "CustomerBrandTrend-monthly-20211031.xlsx",
+							"src_path": "dev/pos/gs-super/",
+							"src_filename": "KR_POS_GS_Super_20201228_20201229093149.MKJNJ02",
 							"src_sheetindex": 0,
 							"src_container": "kor",
 							"src_startRange": "A1"
@@ -167,8 +167,8 @@
 						"referenceName": "csv",
 						"type": "DatasetReference",
 						"parameters": {
-							"target_path": "dev/coupang_premium/transaction/customer_brand_trend/",
-							"target_filename": "CustomerBrandTrend-monthly-20211031.csv",
+							"target_path": "dev/pos/gs-super/",
+							"target_filename": "KR_POS_GS_Super_20201228_20201229093149.csv",
 							"target_container": "kor"
 						}
 					}
