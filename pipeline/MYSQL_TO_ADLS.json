@@ -1,0 +1,107 @@
+{
+	"name": "MYSQL_TO_ADLS",
+	"properties": {
+		"activities": [
+			{
+				"name": "mysql_to_adls",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "MySqlSource",
+						"query": {
+							"value": "@variables('ms_query')",
+							"type": "Expression"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "mysql_server_csngjnjreport",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sql_server_sink",
+						"type": "DatasetReference",
+						"parameters": {
+							"container": {
+								"value": "@variables('container')",
+								"type": "Expression"
+							},
+							"path": {
+								"value": "@variables('landing_file_path')",
+								"type": "Expression"
+							},
+							"file": {
+								"value": "@variables('landing_file_name')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"variables": {
+			"container": {
+				"type": "String"
+			},
+			"landing_file_path": {
+				"type": "String"
+			},
+			"landing_file_name": {
+				"type": "String"
+			},
+			"sdl_table": {
+				"type": "String"
+			},
+			"stage": {
+				"type": "String"
+			},
+			"ms_query": {
+				"type": "String"
+			},
+			"errorMessage": {
+				"type": "String",
+				"defaultValue": "NO"
+			},
+			"watermark_vlaue": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Ingestion/Sources/Utilities"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-11-23T12:47:58Z"
+	}
+}
