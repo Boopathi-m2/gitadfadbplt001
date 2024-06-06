@@ -13,12 +13,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "encoded_c_tbEcRegularMeisai.csv",
+				"fileName": "c_tbEcRegularMeisai.csv",
 				"folderPath": "dev/DCL/cinext",
 				"fileSystem": "jpn"
 			},
 			"columnDelimiter": "\u0001",
-			"encodingName": "WINDOWS-1258",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": ""
