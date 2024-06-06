@@ -1,0 +1,15 @@
+{
+	"name": "OracleTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adfadbplt001lsawsbmntkyl0021jnjcom",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Miscellaneous Pipelines/to_be_deleted"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": []
+	}
+}
