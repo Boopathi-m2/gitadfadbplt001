@@ -1,0 +1,27 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adfadbplt001lsdlsadbplt001",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Miscellaneous Pipelines/to_be_deleted"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "c_tbEcRegularMeisai.csv",
+				"folderPath": "dev/DCL/cinext",
+				"fileSystem": "jpn"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
