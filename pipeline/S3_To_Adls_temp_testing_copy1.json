@@ -155,7 +155,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"src_path": "dev/otc_inventory/transactional/",
-							"src_filename": "OTC_KR_INV_2_202405.xlsx",
+							"src_filename": "OTC_KR_INV_4_202403.xlsx",
 							"src_sheetindex": 0,
 							"src_container": "kor",
 							"src_startRange": "B1"
@@ -168,7 +168,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"target_path": "dev/otc_inventory/transactional/",
-							"target_filename": "OTC_KR_INV_2_202405.csv",
+							"target_filename": "OTC_KR_INV_4_202403.csv",
 							"target_container": "kor"
 						}
 					}
