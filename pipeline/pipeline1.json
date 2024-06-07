@@ -1,0 +1,70 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Script1",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "adfadbplt001lsawsbmntkyl0021jnjcom",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "select C_DIPRIVILEGEID,C_DIKESAIID,DIORDERID,DIPROMID,C_DSPRIVILEGENAME,C_DSPRIVILEGENAMEADM,C_DIRIVILEGESHUBETSU,C_DIPRIVILEGEPRC,C_DIPRIVILEGENUM,C_DIPRIVILEGETOTALPRC,C_DIPRIVILEGEEXCLUSIONKBN,C_DIFRONTSORTORDER,C_DSTEKIYOJYOGAIFLG,C_DSTEKIYOKBN,C_DINONDISPFLG,C_DSTEIKITEKIYOFLG,C_DSTSUJOTEKIYOFLG,C_DSNOSHINSHOOUTPUTFLG,C_DSPRESENTSENDKBN,C_DIPOINTREDUCTIONFLG,C_DIPOINTREDUCTIONRATE,C_DIPOINTTARGETPRC,C_DIPOINTGRANTTYPE,C_DIREGDISCTICKETGIVENID,DSPREP,DSREN,DSELIM,DIPREPUSR,DIRENUSR,DIELIMUSR,DIELIMFLG from DCL.c_tbEcPrivilegeKesai A WHERE EXISTS (SELECT DIORDERID FROM DCL.TBECORDER B WHERE DSREN >= to_timestamp('2024-06-07 01:12:48','YYYY-MM-DD HH24:MI:SS') AND DSREN < to_timestamp('2024-06-07 01:12:57','YYYY-MM-DD HH24:MI:SS') AND A.DIORDERID = B.DIORDERID )"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script1_copy1",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Script1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "adfadbplt001lsawsbmntkyl0021jnjcom",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "select A.C_DIPRIVILEGEID,A.C_DIKESAIID,A.DIORDERID,A.DIPROMID,A.C_DSPRIVILEGENAME,A.C_DSPRIVILEGENAMEADM,A.C_DIRIVILEGESHUBETSU,A.C_DIPRIVILEGEPRC,A.C_DIPRIVILEGENUM,A.C_DIPRIVILEGETOTALPRC,A.C_DIPRIVILEGEEXCLUSIONKBN,A.C_DIFRONTSORTORDER,A.C_DSTEKIYOJYOGAIFLG,A.C_DSTEKIYOKBN,A.C_DINONDISPFLG,A.C_DSTEIKITEKIYOFLG,A.C_DSTSUJOTEKIYOFLG,A.C_DSNOSHINSHOOUTPUTFLG,A.C_DSPRESENTSENDKBN,A.C_DIPOINTREDUCTIONFLG,A.C_DIPOINTREDUCTIONRATE,A.C_DIPOINTTARGETPRC,A.C_DIPOINTGRANTTYPE,A.C_DIREGDISCTICKETGIVENID,A.DSPREP,A.DSREN,A.DSELIM,A.DIPREPUSR,A.DIRENUSR,A.DIELIMUSR,A.DIELIMFLG from DCL.c_tbEcPrivilegeKesai A INNER JOIN DCL.TBECORDER B ON A.DIORDERID = B.DIORDERID WHERE B.DSREN >= to_timestamp('2024-06-07 01:12:48','YYYY-MM-DD HH24:MI:SS') AND B.DSREN < to_timestamp('2024-06-07 01:12:57','YYYY-MM-DD HH24:MI:SS')"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "Miscellaneous Pipelines"
+		},
+		"annotations": []
+	}
+}
