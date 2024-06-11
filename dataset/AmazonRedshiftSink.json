@@ -1,0 +1,15 @@
+{
+	"name": "AmazonRedshiftSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adfadbplt001lsarsadpprd001",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ADF_Framework_Datasets"
+		},
+		"annotations": [],
+		"type": "AmazonRedshiftTable",
+		"schema": []
+	}
+}
