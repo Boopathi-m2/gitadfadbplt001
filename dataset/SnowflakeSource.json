@@ -1,0 +1,12 @@
+{
+	"name": "SnowflakeSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adfadbplt001lssnfkpltdnaload002",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SnowflakeV2Table",
+		"schema": []
+	}
+}
