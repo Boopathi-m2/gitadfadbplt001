@@ -52,68 +52,6 @@
 					"batchCount": 5,
 					"activities": [
 						{
-							"name": "Execute Child Pipeline",
-							"type": "ExecutePipeline",
-							"dependsOn": [],
-							"policy": {
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"pipeline": {
-									"referenceName": "PIPE_hist_data_migration_redshift_snowflake_child",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": false,
-								"parameters": {
-									"Source_Schema": {
-										"value": "@item().SOURCE_SCHEMA",
-										"type": "Expression"
-									},
-									"Source_Table": {
-										"value": "@item().SOURCE_TABLE",
-										"type": "Expression"
-									},
-									"Target_Schema": {
-										"value": "@item().TARGET_SCHEMA",
-										"type": "Expression"
-									},
-									"Target_Table": {
-										"value": "@item().TARGET_TABLE",
-										"type": "Expression"
-									},
-									"IsActive": {
-										"value": "@item().ISACTIVE",
-										"type": "Expression"
-									},
-									"Market": {
-										"value": "@item().MARKET",
-										"type": "Expression"
-									},
-									"type_of_load": {
-										"value": "@item().TYPE_OF_LOAD",
-										"type": "Expression"
-									},
-									"Id": {
-										"value": "@item().ID",
-										"type": "Expression"
-									},
-									"Target_DB": {
-										"value": "@item().TARGET_DB",
-										"type": "Expression"
-									},
-									"Stage_Schema": {
-										"value": "@item().STAGE_SCHEMA",
-										"type": "Expression"
-									},
-									"Environment": {
-										"value": "@pipeline().parameters.Environment",
-										"type": "Expression"
-									}
-								}
-							}
-						},
-						{
 							"name": "Copy data1",
 							"type": "Copy",
 							"dependsOn": [],
