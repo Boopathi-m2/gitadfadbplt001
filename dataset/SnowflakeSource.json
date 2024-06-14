@@ -2,7 +2,7 @@
 	"name": "SnowflakeSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "adfadbplt001lssnfkpltdnaload002",
+			"referenceName": "adfadbplt001lssnfkpltdnacore002",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
