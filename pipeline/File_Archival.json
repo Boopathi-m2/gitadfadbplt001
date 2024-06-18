@@ -224,7 +224,7 @@
 								"type": "Expression"
 							},
 							"directory": {
-								"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'prd', pipeline().globalParameters.environment)}/@{pipeline().parameters.directory}",
+								"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'dev', pipeline().globalParameters.environment)}/@{pipeline().parameters.directory}",
 								"type": "Expression"
 							},
 							"sourceFile": {
@@ -504,7 +504,7 @@
 											"type": "Expression"
 										},
 										"directory": {
-											"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'prd', pipeline().globalParameters.environment)}/@{pipeline().parameters.directory}",
+											"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'dev', pipeline().globalParameters.environment)}/@{pipeline().parameters.directory}",
 											"type": "Expression"
 										},
 										"sourceFile": {
