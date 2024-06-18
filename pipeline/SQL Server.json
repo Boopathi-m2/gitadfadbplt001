@@ -1051,7 +1051,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"on": {
-						"value": "@if(\n\tactivity('read parameters').output.value[0].is_incremental,\n    if(equals(toLower(activity('read parameters').output.value[0].next_incremental_value),'load_date'),\n                    'LOAD_DATE',\n            if(startswith(toLower(activity('read parameters').output.value[0].next_incremental_value),'query:'), 'QUERY'\n            ,'Unknown')),\n            'NO_WATERMARK')",
+						"value": "@if(\n    activity('read parameters').output.value[0].is_incremental,\n    if(\n        equals(toLower(activity('read parameters').output.value[0].next_incremental_value), 'load_date'),\n        'LOAD_DATE',\n        if(\n            startswith(toLower(activity('read parameters').output.value[0].next_incremental_value), 'query:'),\n            'QUERY',\n            if(\n                startswith(toLower(activity('read parameters').output.value[0].next_incremental_value), 'load_date_jpndcl'),\n                'LOAD_DATE_JPNDCL',\n                'Unknown'\n            )\n        )\n    ),\n    'NO_WATERMARK'\n)",
 						"type": "Expression"
 					},
 					"cases": [
