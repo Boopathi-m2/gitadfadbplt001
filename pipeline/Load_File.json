@@ -579,7 +579,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"target_path": {
-											"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'prd', pipeline().globalParameters.environment)}/@{pipeline().parameters.Parameters.value[0].folder_path}",
+											"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'dev', pipeline().globalParameters.environment)}/@{pipeline().parameters.Parameters.value[0].folder_path}",
 											"type": "Expression"
 										},
 										"target_filename": {
