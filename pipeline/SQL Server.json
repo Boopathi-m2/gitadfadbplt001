@@ -1199,6 +1199,28 @@
 									}
 								}
 							]
+						},
+						{
+							"value": "LOAD_DATE_JPNDCL",
+							"activities": [
+								{
+									"name": "load_date_JPNDCL",
+									"type": "SetVariable",
+									"dependsOn": [],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "watermark_value",
+										"value": {
+											"value": "@formatDateTime(convertTimeZone(pipeline().TriggerTime,'UTC','Tokyo Standard Time'), 'yyyy-MM-dd HH:mm:ss')",
+											"type": "Expression"
+										}
+									}
+								}
+							]
 						}
 					]
 				}
