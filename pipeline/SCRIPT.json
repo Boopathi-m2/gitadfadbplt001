@@ -1,0 +1,34 @@
+{
+	"name": "SCRIPT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Script1",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "adfadbplt001lssnfkpltdnacore",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "CREATE TABLE NTAEDW_INTEGRATION.EDW_VW_POP6_TH_VISITS_PROD_ATTRIBUTE_AUDITS (\t\t--// CREATE TABLE na_edw.edw_vw_pop6_th_visits_prod_attribute_audits (\r\n    cntry_cd varchar(10),\t\t--//  ENCODE raw // character varying\r\n    visit_id varchar(255),\t\t--//  ENCODE raw // character varying\r\n    audit_form_id varchar(255),\t\t--//  ENCODE raw // character varying\r\n    audit_form varchar(255),\t\t--//  ENCODE raw // character varying\r\n    section_id varchar(255),\t\t--//  ENCODE raw // character varying\r\n    section varchar(255),\t\t--//  ENCODE raw // character varying\r\n    field_id varchar(255),\t\t--//  ENCODE raw // character varying\r\n    field_code varchar(255),\t\t--//  ENCODE raw // character varying\r\n    field_label varchar(255),\t\t--//  ENCODE raw // character varying\r\n    field_type varchar(50),\t\t--//  ENCODE raw // character varying\r\n    dependent_on_field_id varchar(255),\t\t--//  ENCODE raw // character varying\r\n    product_attribute_id varchar(255),\t\t--//  ENCODE raw // character varying\r\n    product_attribute varchar(200),\t\t--//  ENCODE raw // character varying\r\n    product_attribute_value_id varchar(255),\t\t--//  ENCODE raw // character varying\r\n    product_attribute_value varchar(200),\t\t--//  ENCODE raw // character varying\r\n    response varchar(65535),\t\t--//  ENCODE raw // character varying\r\n    visit_date date,\t\t--//  ENCODE raw\r\n    check_in_datetime timestamp without time zone,\t\t--//  ENCODE raw\r\n    check_out_datetime timestamp without time zone,\t\t--//  ENCODE raw\r\n    popdb_id varchar(255),\t\t--//  ENCODE raw // character varying\r\n    pop_code varchar(50),\t\t--//  ENCODE raw // character varying\r\n    pop_name varchar(100),\t\t--//  ENCODE raw // character varying\r\n    address varchar(150),\t\t--//  ENCODE raw // character varying\r\n    check_in_longitude numeric(18,5),\t\t--//  ENCODE raw\r\n    check_in_latitude numeric(18,5),\t\t--//  ENCODE raw\r\n    check_out_longitude numeric(18,5),\t\t--//  ENCODE raw\r\n    check_out_latitude numeric(18,5),\t\t--//  ENCODE raw\r\n    check_in_photo varchar(200),\t\t--//  ENCODE raw // character varying\r\n    check_out_photo varchar(200),\t\t--//  ENCODE raw // character varying\r\n    username varchar(50),\t\t--//  ENCODE raw // character varying\r\n    user_full_name varchar(50),\t\t--//  ENCODE raw // character varying\r\n    superior_username varchar(50),\t\t--//  ENCODE raw // character varying\r\n    superior_name varchar(50),\t\t--//  ENCODE raw // character varying\r\n    planned_visit numeric(18,0),\t\t--//  ENCODE raw // integer\r\n    cancelled_visit numeric(18,0),\t\t--//  ENCODE raw // integer\r\n    cancellation_reason varchar(255),\t\t--//  ENCODE raw // character varying\r\n    cancellation_note varchar(255)\t\t--//  ENCODE raw // character varying\r\n)\r\n;\t\t--// DISTSTYLE EVEN;\r\n"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
