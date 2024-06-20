@@ -1039,8 +1039,6 @@
 								{
 									"name": "Set error popcompany copy",
 									"type": "SetVariable",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Copy popcompany file",
