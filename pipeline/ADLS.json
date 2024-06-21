@@ -843,19 +843,24 @@
 		],
 		"parameters": {
 			"category": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "pop6_hk_transaction"
 			},
 			"usecase_id": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 291
 			},
 			"sequence_id": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 2
 			},
 			"process_id": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 1381
 			},
 			"phase_id": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 1
 			}
 		},
 		"variables": {
