@@ -683,7 +683,8 @@
 		],
 		"parameters": {
 			"category": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "pop6_kr_transaction"
 			},
 			"force_rerun": {
 				"type": "bool",
