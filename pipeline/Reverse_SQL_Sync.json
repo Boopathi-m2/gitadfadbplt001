@@ -172,12 +172,56 @@
 							"value": "dna_load",
 							"activities": [
 								{
-									"name": "LogicToBeAddedInFuture",
-									"type": "Wait",
+									"name": "Script Source Count Load",
+									"type": "Script",
 									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "adfadbplt001lssnfkpltdnaload",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": {
+													"value": "SELECT count(*) AS \"count\" FROM @{activity('read parameters').output.value[0].source_schema_table}",
+													"type": "Expression"
+												}
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Set sourceCount Load",
+									"type": "SetVariable",
+									"dependsOn": [
+										{
+											"activity": "Script Source Count Load",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
 									"userProperties": [],
 									"typeProperties": {
-										"waitTimeInSeconds": 1
+										"variableName": "sourceCount",
+										"value": {
+											"value": "@int(activity('Script Source Count Load').output.resultSets[0].rows[0].count)",
+											"type": "Expression"
+										}
 									}
 								}
 							]
@@ -822,12 +866,247 @@
 							"value": "dna_load",
 							"activities": [
 								{
-									"name": "LogicToBeAddedInFuture_copy1",
-									"type": "Wait",
+									"name": "Copy data dna load to adls",
+									"type": "Copy",
 									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
 									"userProperties": [],
 									"typeProperties": {
-										"waitTimeInSeconds": 1
+										"source": {
+											"type": "SnowflakeSource",
+											"query": {
+												"value": "@{activity('read parameters').output.value[0].source_query}",
+												"type": "Expression"
+											},
+											"exportSettings": {
+												"type": "SnowflakeExportCopyCommand"
+											}
+										},
+										"sink": {
+											"type": "DelimitedTextSink",
+											"storeSettings": {
+												"type": "AzureBlobStorageWriteSettings"
+											},
+											"formatSettings": {
+												"type": "DelimitedTextWriteSettings",
+												"quoteAllText": true,
+												"fileExtension": ".txt"
+											}
+										},
+										"enableStaging": false
+									},
+									"inputs": [
+										{
+											"referenceName": "DNA_LOAD_Dataset",
+											"type": "DatasetReference"
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "csv_blob_sink",
+											"type": "DatasetReference",
+											"parameters": {
+												"container": {
+													"value": "@{activity('read parameters').output.value[0].container}",
+													"type": "Expression"
+												},
+												"directory": {
+													"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'prd', pipeline().globalParameters.environment)}/@{activity('read parameters').output.value[0].landing_file_path}",
+													"type": "Expression"
+												},
+												"file": {
+													"value": "@{activity('read parameters').output.value[0].landing_file_name}.csv",
+													"type": "Expression"
+												}
+											}
+										}
+									]
+								},
+								{
+									"name": "Copy load data adls to sql",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "Copy data dna load to adls",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "DelimitedTextSource",
+											"storeSettings": {
+												"type": "AzureBlobFSReadSettings",
+												"recursive": true,
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "DelimitedTextReadSettings"
+											}
+										},
+										"sink": {
+											"type": "SqlServerSink",
+											"writeBehavior": "insert",
+											"sqlWriterUseTableLock": false
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "sql_server_sink_soh_delim",
+											"type": "DatasetReference",
+											"parameters": {
+												"container": {
+													"value": "@{activity('read parameters').output.value[0].container}",
+													"type": "Expression"
+												},
+												"path": {
+													"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'prd', pipeline().globalParameters.environment)}/@{activity('read parameters').output.value[0].landing_file_path}",
+													"type": "Expression"
+												},
+												"file": {
+													"value": "@{activity('read parameters').output.value[0].landing_file_name}.csv",
+													"type": "Expression"
+												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "SqlServerSink",
+											"type": "DatasetReference",
+											"parameters": {
+												"schema": {
+													"value": "@split(activity('read parameters').output.value[0].target_schema_table,'.')[0]",
+													"type": "Expression"
+												},
+												"table": {
+													"value": "@split(activity('read parameters').output.value[0].target_schema_table,'.')[1]",
+													"type": "Expression"
+												}
+											}
+										}
+									]
+								},
+								{
+									"name": "Script Target Count post sync load",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Copy load data adls to sql",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "adfadbplt001lsawswdvsgpw0006",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": {
+													"value": "SELECT count(*) AS count FROM @{activity('read parameters').output.value[0].target_schema_table}",
+													"type": "Expression"
+												}
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Execute Archival Load",
+									"type": "ExecutePipeline",
+									"dependsOn": [
+										{
+											"activity": "Copy load data adls to sql",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "File_Archival",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"category": {
+												"value": "@pipeline().parameters.category",
+												"type": "Expression"
+											},
+											"usecase_id": {
+												"value": "@pipeline().parameters.usecase_id",
+												"type": "Expression"
+											},
+											"sequence_id": {
+												"value": "@pipeline().parameters.sequence_id",
+												"type": "Expression"
+											},
+											"process_id": {
+												"value": "@pipeline().parameters.process_id",
+												"type": "Expression"
+											},
+											"phase_id": {
+												"value": "@pipeline().parameters.phase_id",
+												"type": "Expression"
+											},
+											"isError": "No",
+											"container": {
+												"value": "@activity('read parameters').output.value[0].container",
+												"type": "Expression"
+											},
+											"directory": {
+												"value": "@{activity('read parameters').output.value[0].landing_file_path}",
+												"type": "Expression"
+											},
+											"sourceFile": {
+												"value": "@{activity('read parameters').output.value[0].landing_file_name}.csv",
+												"type": "Expression"
+											},
+											"sheetNames": {
+												"value": "@variables('emptyArray')",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
