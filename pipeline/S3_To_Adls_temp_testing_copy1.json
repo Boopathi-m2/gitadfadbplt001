@@ -167,7 +167,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"target_path": "dev/dads/transaction/naver_keyword weekly",
-							"target_filename": "Naver_keyword_20240610_20240616_quotes.xlsx",
+							"target_filename": "Naver_keyword_20240610_20240616_quotes.csv",
 							"target_container": "kor"
 						}
 					}
