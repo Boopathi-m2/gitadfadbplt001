@@ -157,7 +157,8 @@
 							"src_path": "dev/dads/transaction/naver_keyword weekly",
 							"src_filename": "Naver_keyword_20240610_20240616.xlsx",
 							"src_sheetname": "쇼핑(상품형)_키워드",
-							"src_container": "kor"
+							"src_container": "kor",
+							"src_startRange": "A1"
 						}
 					}
 				],
