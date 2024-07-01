@@ -1399,19 +1399,19 @@
 		"parameters": {
 			"category": {
 				"type": "string",
-				"defaultValue": "test"
+				"defaultValue": "KR_MDS_COUPANG_PREMIUM"
 			},
 			"usecase_id": {
 				"type": "int",
-				"defaultValue": 239
+				"defaultValue": 196
 			},
 			"sequence_id": {
 				"type": "int",
-				"defaultValue": 1
+				"defaultValue": 2
 			},
 			"process_id": {
 				"type": "int",
-				"defaultValue": 976
+				"defaultValue": 1610
 			},
 			"phase_id": {
 				"type": "int",
