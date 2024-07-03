@@ -617,16 +617,20 @@
 		],
 		"parameters": {
 			"sequence_id": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 1
 			},
 			"usecase_id": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 320
 			},
 			"phase_id": {
-				"type": "int"
+				"type": "int",
+				"defaultValue": 1
 			},
 			"category": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "test"
 			}
 		},
 		"variables": {
