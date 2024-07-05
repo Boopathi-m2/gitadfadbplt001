@@ -262,7 +262,10 @@
 												"type": "Expression"
 											},
 											"exportSettings": {
-												"type": "SnowflakeExportCopyCommand"
+												"type": "SnowflakeExportCopyCommand",
+												"additionalCopyOptions": {
+													"MAX_FILE_SIZE": "52428800"
+												}
 											}
 										},
 										"sink": {
@@ -1124,7 +1127,7 @@
 			},
 			"usecase_id": {
 				"type": "int",
-				"defaultValue": 239
+				"defaultValue": 326
 			},
 			"sequence_id": {
 				"type": "int",
@@ -1132,7 +1135,7 @@
 			},
 			"process_id": {
 				"type": "int",
-				"defaultValue": 976
+				"defaultValue": 1703
 			},
 			"phase_id": {
 				"type": "int",
