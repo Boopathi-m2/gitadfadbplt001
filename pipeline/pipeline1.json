@@ -1,0 +1,60 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set extracted date japan",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "extracted_object",
+					"value": {
+						"value": "@if(contains(variables('filename'),'OTHERS'),split(variables('filename'), '_')[2],split(variables('filename'),'_')[1])",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "filename",
+					"value": "AEON_20231204_1.csv"
+				}
+			}
+		],
+		"variables": {
+			"filename": {
+				"type": "String"
+			},
+			"extract_name": {
+				"type": "String"
+			},
+			"extract_value": {
+				"type": "Integer"
+			},
+			"extracted_object": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
