@@ -454,7 +454,7 @@
 									"typeProperties": {
 										"variableName": "extractedDate",
 										"value": {
-											"value": "@take(replace(replace(pipeline().parameters.sourceFileName, pipeline().parameters.parameters.value[0].FILE_SPEC,'' ),'_',''),8)",
+											"value": "@if(contains(pipeline().parameters.sourceFileName,'OTHERS'),split(pipeline().parameters.sourceFileName, '_')[2],split(pipeline().parameters.sourceFileName,'_')[1])",
 											"type": "Expression"
 										}
 									}
@@ -2321,6 +2321,18 @@
 				"type": "String"
 			},
 			"upload_time": {
+				"type": "String"
+			},
+			"filename": {
+				"type": "String"
+			},
+			"extract_name": {
+				"type": "String"
+			},
+			"extract_value": {
+				"type": "Integer"
+			},
+			"extracted_object": {
 				"type": "String"
 			}
 		},
