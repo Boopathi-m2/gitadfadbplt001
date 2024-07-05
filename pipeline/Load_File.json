@@ -2323,9 +2323,6 @@
 			"upload_time": {
 				"type": "String"
 			},
-			"filename": {
-				"type": "String"
-			},
 			"extract_name": {
 				"type": "String"
 			},
