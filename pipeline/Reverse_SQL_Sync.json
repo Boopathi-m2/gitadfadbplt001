@@ -266,7 +266,7 @@
 											"exportSettings": {
 												"type": "SnowflakeExportCopyCommand",
 												"additionalCopyOptions": {
-													"MAX_FILE_SIZE": "209715200"
+													"MAX_FILE_SIZE": "524288000"
 												}
 											}
 										},
@@ -1137,7 +1137,7 @@
 			},
 			"process_id": {
 				"type": "int",
-				"defaultValue": 1703
+				"defaultValue": 1708
 			},
 			"phase_id": {
 				"type": "int",
