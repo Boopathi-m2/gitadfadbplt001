@@ -86,7 +86,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "OracleJapan_pl005",
+						"referenceName": "OracleTable1",
 						"type": "DatasetReference"
 					}
 				],

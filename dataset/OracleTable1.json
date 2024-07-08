@@ -1,0 +1,16 @@
+{
+	"name": "OracleTable1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adfadbplt001lsvmcitsapl002fjx2com",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OracleTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "JPEDI",
+			"table": "SELL_OUT_PLANET"
+		}
+	}
+}
