@@ -59,7 +59,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "SELECT count( *) FROM JPEDI.SELL_OUT_PLANET",
+						"oracleReaderQuery": "SELECT  ID,RCV_DT,TEST_FLAG,BGN_SNDR_CD,WS_CD,RTL_TYPE,RTL_CD,TRADE_TYPE,SHP_DATE,SHP_NUM,TRADE_CD,DEP_CD,CHG_CD,PERSON_IN_CHARGE,PERSON_NAME,RTL_NAME,RTL_HO_CD,RTL_ADDRESS_CD,DATA_TYPE,OPT_FLD,ITEM_NM,ITEM_CD_TYP,ITEM_CD,QTY,QTY_TYPE,PRICE,PRICE_TYPE,BGN_SNDR_CD_GLN,RCV_CD_GLN,WS_CD_GLN,SHP_WS_CD,SHP_WS_CD_GLN,REP_NAME_KANJI,REP_INFO,TRADE_CD_GLN,RTL_CD_GLN,RTL_NAME_KANJI,RTL_HO_CD_GLN,ITEM_CD_GTIN,ITEM_NM_KANJI,UNT_PRC,NET_PRC,SALES_CHAN_TYPE\r\nFROM JPEDI.SELL_OUT_PLANET;",
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
@@ -97,7 +97,7 @@
 						"parameters": {
 							"container": "jpn",
 							"path": "dev/EDI_TABLES/master/",
-							"file": "edi_sample"
+							"file": "EDI_SELL_OUT.csv"
 						}
 					}
 				]
