@@ -5,6 +5,8 @@
 			{
 				"name": "audit start",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureInput": false
@@ -824,6 +826,8 @@
 								{
 									"name": "Execute Archival_error",
 									"type": "ExecutePipeline",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Copy data adls to sql",
