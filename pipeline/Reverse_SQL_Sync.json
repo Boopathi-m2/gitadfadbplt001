@@ -205,7 +205,7 @@
 									}
 								},
 								{
-									"name": "Set flagDataPresent",
+									"name": "Set sourceCount2",
 									"type": "SetVariable",
 									"dependsOn": [
 										{
@@ -221,8 +221,11 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
-										"variableName": "flagDataPresent",
-										"value": true
+										"variableName": "sourceCount2",
+										"value": {
+											"value": "@activity('Get flagDataPresent').output.resultSetCount",
+											"type": "Expression"
+										}
 									}
 								}
 							]
@@ -294,7 +297,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"on": {
-						"value": "@if(greater(variables('sourceCount'),0),activity('read parameters').output.value[0].decide_source,'noDataLoad')",
+						"value": "@if(and(greater(variables('sourceCount'),0),greater(variables('sourceCount2'),0)),activity('read parameters').output.value[0].decide_source,'noDataLoad')",
 						"type": "Expression"
 					},
 					"cases": [
@@ -1217,8 +1220,9 @@
 				"type": "Array",
 				"defaultValue": []
 			},
-			"flagDataPresent": {
-				"type": "Boolean"
+			"sourceCount2": {
+				"type": "Integer",
+				"defaultValue": 0
 			}
 		},
 		"folder": {
