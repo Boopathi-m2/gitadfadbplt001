@@ -22,7 +22,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "Select TOP 5 * from dbo.RS_rg_edw_customer_base_dim_temp;"
+							"text": "SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.RS_rg_edw_customer_base_dim_temp') ;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
