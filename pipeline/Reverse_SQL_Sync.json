@@ -5,6 +5,8 @@
 			{
 				"name": "audit start",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureInput": false
@@ -264,7 +266,7 @@
 											"exportSettings": {
 												"type": "SnowflakeExportCopyCommand",
 												"additionalCopyOptions": {
-													"MAX_FILE_SIZE": "1048576"
+													"MAX_FILE_SIZE": "209715200"
 												}
 											}
 										},
@@ -1127,7 +1129,7 @@
 			},
 			"usecase_id": {
 				"type": "int",
-				"defaultValue": 239
+				"defaultValue": 326
 			},
 			"sequence_id": {
 				"type": "int",
@@ -1135,7 +1137,7 @@
 			},
 			"process_id": {
 				"type": "int",
-				"defaultValue": 976
+				"defaultValue": 1704
 			},
 			"phase_id": {
 				"type": "int",
