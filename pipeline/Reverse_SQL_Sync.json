@@ -1015,6 +1015,8 @@
 			{
 				"name": "audit fail unknown source",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Switch_Source_get_source_count",
