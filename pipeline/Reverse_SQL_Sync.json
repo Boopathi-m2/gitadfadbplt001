@@ -167,6 +167,63 @@
 											"type": "Expression"
 										}
 									}
+								},
+								{
+									"name": "Get flagDataPresent",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Set sourceCount",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "adfadbplt001lssnfkpltdnacore",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": {
+													"value": "@{activity('read parameters').output.value[0].source_query} LIMIT 2;",
+													"type": "Expression"
+												}
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Set flagDataPresent",
+									"type": "SetVariable",
+									"dependsOn": [
+										{
+											"activity": "Get flagDataPresent",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"variableName": "flagDataPresent",
+										"value": true
+									}
 								}
 							]
 						},
@@ -1159,6 +1216,9 @@
 			"emptyArray": {
 				"type": "Array",
 				"defaultValue": []
+			},
+			"flagDataPresent": {
+				"type": "Boolean"
 			}
 		},
 		"folder": {
