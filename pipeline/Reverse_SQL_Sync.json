@@ -1148,7 +1148,7 @@
 					},
 					"ifTrueActivities": [
 						{
-							"name": "Script Truncate Source",
+							"name": "Script Truncate Target",
 							"type": "Script",
 							"dependsOn": [],
 							"policy": {
