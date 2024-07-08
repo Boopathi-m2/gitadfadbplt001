@@ -262,7 +262,10 @@
 												"type": "Expression"
 											},
 											"exportSettings": {
-												"type": "SnowflakeExportCopyCommand"
+												"type": "SnowflakeExportCopyCommand",
+												"additionalCopyOptions": {
+													"MAX_FILE_SIZE": "1048576"
+												}
 											}
 										},
 										"sink": {
