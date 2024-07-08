@@ -44,7 +44,7 @@
 			},
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
-			"nullValue": "null",
+			"nullValue": " ",
 			"quoteChar": "\""
 		},
 		"schema": []
