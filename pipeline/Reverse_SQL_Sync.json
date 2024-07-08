@@ -99,7 +99,7 @@
 				"type": "Switch",
 				"dependsOn": [
 					{
-						"activity": "Script Target Count",
+						"activity": "If Truncate Source",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -897,7 +897,7 @@
 				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
-						"activity": "If Truncate Source",
+						"activity": "Switch Source",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -1078,7 +1078,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Switch Source",
+						"activity": "Script Target Count",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -1104,7 +1104,7 @@
 							},
 							"userProperties": [],
 							"linkedServiceName": {
-								"referenceName": "adfadbplt001lssnfkpltdnacore",
+								"referenceName": "adfadbplt001lsawswdvsgpw0006",
 								"type": "LinkedServiceReference"
 							},
 							"typeProperties": {
@@ -1112,7 +1112,7 @@
 									{
 										"type": "Query",
 										"text": {
-											"value": "TRUNCATE TABLE @{activity('read parameters').output.value[0].source_schema_table}",
+											"value": "TRUNCATE TABLE @{activity('read parameters').output.value[0].target_schema_table}",
 											"type": "Expression"
 										}
 									}
@@ -1139,7 +1139,7 @@
 			},
 			"process_id": {
 				"type": "int",
-				"defaultValue": 1708
+				"defaultValue": 1709
 			},
 			"phase_id": {
 				"type": "int",
