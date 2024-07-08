@@ -624,6 +624,8 @@
 								{
 									"name": "Execute Archival",
 									"type": "ExecutePipeline",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Copy data adls to sql",
