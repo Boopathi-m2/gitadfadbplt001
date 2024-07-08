@@ -97,8 +97,6 @@
 			{
 				"name": "Switch_Source_get_source_count",
 				"type": "Switch",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "If Truncate Target",
@@ -628,8 +626,6 @@
 								{
 									"name": "Execute Archival",
 									"type": "ExecutePipeline",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Copy data adls to sql",
@@ -826,8 +822,6 @@
 								{
 									"name": "Execute Archival_error",
 									"type": "ExecutePipeline",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Copy data adls to sql",
@@ -923,8 +917,6 @@
 			{
 				"name": "Script Target Count",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "read parameters",
@@ -1142,8 +1134,6 @@
 				"name": "If Truncate Target",
 				"description": "",
 				"type": "IfCondition",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script Target Count",
