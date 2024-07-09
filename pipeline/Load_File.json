@@ -2276,8 +2276,6 @@
 			{
 				"name": "If  japan 002fjx2",
 				"type": "IfCondition",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Check load method",
