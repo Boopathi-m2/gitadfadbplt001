@@ -106,12 +106,12 @@
 				"userProperties": [],
 				"typeProperties": {
 					"on": {
-						"value": "@activity('read parameters').output.value[0].FILESYSTEMNAME",
+						"value": "@activity('read parameters').output.value[0].sourcetype",
 						"type": "Expression"
 					},
 					"cases": [
 						{
-							"value": "sawswfgsgpw0002",
+							"value": "direct",
 							"activities": [
 								{
 									"name": "FileSystem_to_ADLS",
@@ -310,7 +310,7 @@
 							]
 						},
 						{
-							"value": "sawsbtasgpw0000",
+							"value": "query",
 							"activities": [
 								{
 									"name": "error_copy1",
@@ -730,39 +730,6 @@
 								}
 							]
 						}
-					],
-					"defaultActivities": [
-						{
-							"name": "Fail - SFTP Source",
-							"type": "Fail",
-							"dependsOn": [
-								{
-									"activity": "Set error unknown file system",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"userProperties": [],
-							"typeProperties": {
-								"message": "Fail - file system  Source Unknown",
-								"errorCode": "404"
-							}
-						},
-						{
-							"name": "Set error unknown file system",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"policy": {
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "errorResponse1",
-								"value": " SFTP Source Unknown"
-							}
-						}
 					]
 				}
 			},
@@ -771,7 +738,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Switch_SourceType",
+						"activity": "foreachsource",
 						"dependencyConditions": [
 							"Failed"
 						]
@@ -831,7 +798,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Switch_SourceType",
+						"activity": "foreachsource",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -884,6 +851,22 @@
 							"type": "Expression"
 						}
 					}
+				}
+			},
+			{
+				"name": "foreachsource",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Switch_SourceType",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"batchCount": 10
 				}
 			}
 		],
