@@ -1,0 +1,155 @@
+{
+	"name": "WEB_TO_ADLS",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.SourceNTarget",
+						"type": "Expression"
+					},
+					"batchCount": 10,
+					"activities": [
+						{
+							"name": "download_file",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "check for response",
+									"dependencyConditions": [
+										"Completed"
+									]
+								},
+								{
+									"activity": "dummy_wait_on_failure",
+									"dependencyConditions": [
+										"Skipped"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "BinarySource",
+									"storeSettings": {
+										"type": "HttpReadSettings",
+										"requestMethod": "POST",
+										"requestTimeout": ""
+									},
+									"formatSettings": {
+										"type": "BinaryReadSettings"
+									}
+								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "http_binary_src",
+									"type": "DatasetReference",
+									"parameters": {
+										"url": {
+											"value": "@item().source",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "BinaryDestination",
+									"type": "DatasetReference",
+									"parameters": {
+										"container": {
+											"value": "@pipeline().parameters.container",
+											"type": "Expression"
+										},
+										"directory": {
+											"value": "@pipeline().parameters.filepath",
+											"type": "Expression"
+										},
+										"fileName": {
+											"value": "@item().target",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						},
+						{
+							"name": "check for response",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"method": "POST",
+								"url": {
+									"value": "@item().source",
+									"type": "Expression"
+								},
+								"connectVia": {
+									"referenceName": "AutoResolveIntegrationRuntime",
+									"type": "IntegrationRuntimeReference"
+								}
+							}
+						},
+						{
+							"name": "dummy_wait_on_failure",
+							"type": "Wait",
+							"dependsOn": [
+								{
+									"activity": "check for response",
+									"dependencyConditions": [
+										"Failed"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"waitTimeInSeconds": 1
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"SourceNTarget": {
+				"type": "array"
+			},
+			"container": {
+				"type": "string"
+			},
+			"filepath": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Ingestion/Sources/Utilities"
+		},
+		"annotations": []
+	}
+}
