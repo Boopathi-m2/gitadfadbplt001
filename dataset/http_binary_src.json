@@ -1,0 +1,16 @@
+{
+	"name": "http_binary_src",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adfadbplt001lshttpserver001",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		}
+	}
+}
