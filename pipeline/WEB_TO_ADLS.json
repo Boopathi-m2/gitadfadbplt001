@@ -12,7 +12,7 @@
 						"value": "@pipeline().parameters.SourceNTarget",
 						"type": "Expression"
 					},
-					"batchCount": 10,
+					"batchCount": 30,
 					"activities": [
 						{
 							"name": "download_file",
