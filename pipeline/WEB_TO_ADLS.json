@@ -17,20 +17,7 @@
 						{
 							"name": "download_file",
 							"type": "Copy",
-							"dependsOn": [
-								{
-									"activity": "check for response",
-									"dependencyConditions": [
-										"Completed"
-									]
-								},
-								{
-									"activity": "dummy_wait_on_failure",
-									"dependencyConditions": [
-										"Skipped"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
 								"retry": 0,
@@ -93,35 +80,11 @@
 							]
 						},
 						{
-							"name": "check for response",
-							"type": "WebActivity",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"method": "POST",
-								"url": {
-									"value": "@item().source",
-									"type": "Expression"
-								},
-								"connectVia": {
-									"referenceName": "AutoResolveIntegrationRuntime",
-									"type": "IntegrationRuntimeReference"
-								}
-							}
-						},
-						{
-							"name": "dummy_wait_on_failure",
-							"type": "Wait",
+							"name": "check_404",
+							"type": "IfCondition",
 							"dependsOn": [
 								{
-									"activity": "check for response",
+									"activity": "download_file",
 									"dependencyConditions": [
 										"Failed"
 									]
@@ -129,7 +92,28 @@
 							],
 							"userProperties": [],
 							"typeProperties": {
-								"waitTimeInSeconds": 1
+								"expression": {
+									"value": "@contains(toLower(activity('download_file').error?.errormessage),'404 not found')",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
+									{
+										"name": "fail",
+										"type": "Fail",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"message": {
+												"value": "@activity('download_file').error?.errormessage",
+												"type": "Expression"
+											},
+											"errorCode": {
+												"value": "@activity('download_file').errpr?.errorCode",
+												"type": "Expression"
+											}
+										}
+									}
+								]
 							}
 						}
 					]
