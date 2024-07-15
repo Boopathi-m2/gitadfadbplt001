@@ -5,8 +5,6 @@
 			{
 				"name": "audit start",
 				"type": "ExecutePipeline",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureInput": false
@@ -97,8 +95,6 @@
 			{
 				"name": "audit fail - Switch_FileSystem",
 				"type": "ExecutePipeline",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "repeatreading",
@@ -159,8 +155,6 @@
 			{
 				"name": "audit success",
 				"type": "ExecutePipeline",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "repeatreading",
