@@ -235,7 +235,7 @@
 					"source": {
 						"type": "SnowflakeSource",
 						"query": {
-							"value": "@if(equals(toLower(activity('read parameters').output.value[0].sourcetype), 'query'),\n    concat('SELECT COUNT(1) AS ROW_COUNT FROM (',replace(activity('read parameters').output.value[0].sourcequery,';',''),')'),\n    'SELECT 1 AS ROW_COUNT')\n",
+							"value": "@if(empty(activity('read parameters').output.value),'SELECT 0 AS ROW_COUNT',if(empty(activity('read parameters').output.value[0].sourcetype),'SELECT 0 AS ROW_COUNT',if(equals(toLower(activity('read parameters').output.value[0].sourcetype), 'query'),\n    concat('SELECT COUNT(1) AS ROW_COUNT FROM (',replace(activity('read parameters').output.value[0].sourcequery,';',''),')'),\n    'SELECT 1 AS ROW_COUNT')))\n",
 							"type": "Expression"
 						},
 						"exportSettings": {
@@ -267,7 +267,7 @@
 				"typeProperties": {
 					"variableName": "total_reads",
 					"value": {
-						"value": "@if(\n    greater(activity('get_row_count').output.firstRow.row_count,5000),\n    int(substring(string(add(div(activity('get_row_count').output.firstRow.row_count,5000),1)),0,indexOf(string(add(div(activity('get_row_count').output.firstRow.row_count,5000),1)),'.'))),1)",
+						"value": "@if(equals(activity('get_row_count').output.firstRow.row_count,0),0,if(\n    greater(activity('get_row_count').output.firstRow.row_count,5000),\n    int(substring(string(add(div(activity('get_row_count').output.firstRow.row_count,5000),1)),0,indexOf(string(add(div(activity('get_row_count').output.firstRow.row_count,5000),1)),'.'))),1))",
 						"type": "Expression"
 					}
 				}
@@ -311,7 +311,7 @@
 									{
 										"type": "Query",
 										"text": {
-											"value": "SELECT SOURCE, TARGET FROM \n(\n    @{if(equals(toLower(activity('read parameters').output.value[0].sourcetype), 'query'),replace(if(contains(activity('read parameters').output.value[0].sourcequery,' RN'),activity('read parameters').output.value[0].sourcequery,replace(activity('read parameters').output.value[0].sourcequery,'SELECT ','SELECT ROW_NUMBER() OVER(ORDER BY NULL) AS RN,')),';',''),\n    concat('SELECT 1 AS RN,''',activity('read parameters').output.value[0].sourceurl,''' AS SOURCE, ''', activity('read parameters').output.value[0].targetfile,''' AS TARGET'))}\n) \nWHERE RN > (@{variables('current_iter')}- 1) * 5000\nAND RN <= @{variables('current_iter')}*5000",
+											"value": "SELECT SOURCE, TARGET FROM \n(\n    @{if(empty(activity('read parameters').output.value),'SELECT 0 RN, NULL SOURCE, NULL TARGET',if(equals(toLower(activity('read parameters').output.value[0].sourcetype), 'query'),replace(if(contains(activity('read parameters').output.value[0].sourcequery,' RN'),activity('read parameters').output.value[0].sourcequery,replace(activity('read parameters').output.value[0].sourcequery,'SELECT ','SELECT ROW_NUMBER() OVER(ORDER BY NULL) AS RN,')),';',''),\n    concat('SELECT 1 AS RN,''',activity('read parameters').output.value[0].sourceurl,''' AS SOURCE, ''', activity('read parameters').output.value[0].targetfile,''' AS TARGET')))}\n) \nWHERE RN > (@{variables('current_iter')}- 1) * 5000\nAND RN <= @{variables('current_iter')}*5000",
 											"type": "Expression"
 										}
 									}
