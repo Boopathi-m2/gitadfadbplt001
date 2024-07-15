@@ -93,7 +93,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@contains(toLower(activity('download_file').error?.errormessage),'404 not found')",
+									"value": "@contains(toLower(activity('download_file').error?.message),'404 not found')",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
@@ -104,7 +104,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"message": {
-												"value": "@activity('download_file').error?.errormessage",
+												"value": "@activity('download_file').error?.message",
 												"type": "Expression"
 											},
 											"errorCode": {
