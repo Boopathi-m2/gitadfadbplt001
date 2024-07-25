@@ -1,0 +1,66 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "capturesqlrds_to_adls",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AmazonRdsForSqlServerSource",
+						"sqlReaderQuery": "SELECT Tag,\r\n       Period_type,\r\n       TYPE,\r\n       Period_Date,\r\n       Brand,\r\n       GFO,\r\n       \"Need State\",\r\n       Category,\r\n       \"Sub-Category\",\r\n       Segment,\r\n       \"Sub-Segment\",\r\n       Manufacturer,\r\n       \"Country/Cluster\",\r\n       Region,\r\n       \"Market Type\",\r\n       Cluster,\r\n       \"Country (geo)\",\r\n       \"Special Region\",\r\n       \"Country Strategic Role\",\r\n       Universe,\r\n       \"Last Period\",\r\n        Value,\r\n       brand_manufacturer_flg,\r\n       \"Database Category\",\r\n       \"Database Date\",\r\n       \"Text Desc\",\r\n       Metric_Period,\r\n       \"Update\",\r\n       FileName,\r\n       Channel\r\nFROM bpanorama.bpwarehouse.GBA_QSD_Market\r\nwhere region='APAC';",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "AmazonRdsForCapturesqlrds",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sql_server_sink_compressed",
+						"type": "DatasetReference",
+						"parameters": {
+							"container": "asp",
+							"path": "dev/Regional_Market_Share/",
+							"file": "GBA_QSD_Market_data_extraction"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
