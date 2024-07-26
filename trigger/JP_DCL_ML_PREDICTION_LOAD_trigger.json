@@ -1,5 +1,5 @@
 {
-	"name": "In_Finance_Simulator_Ingestion_trigger",
+	"name": "JP_DCL_ML_PREDICTION_LOAD_trigger",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
@@ -10,26 +10,22 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"category": "In_Finance_Simulator_Ingestion"
+					"category": "JP_DCL_ML_PREDICTION_LOAD"
 				}
 			}
 		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
-				"frequency": "Month",
+				"frequency": "Day",
 				"interval": 1,
-				"startTime": "2024-06-20T14:25:00",
+				"startTime": "2024-07-25T12:45:00",
 				"timeZone": "Singapore Standard Time",
 				"schedule": {
 					"minutes": [
 						0
 					],
 					"hours": [
-						10
-					],
-					"monthDays": [
-						7,
 						21
 					]
 				}

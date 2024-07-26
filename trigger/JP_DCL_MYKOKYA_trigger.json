@@ -1,5 +1,5 @@
 {
-	"name": "KR_SFMC_NAVER_DATA_trigger",
+	"name": "JP_DCL_MYKOKYA_trigger",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
@@ -10,25 +10,17 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"category": "KR_SFMC_NAVER_DATA"
+					"category": "JP_DCL_MYKOKYA"
 				}
 			}
 		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
-				"frequency": "Day",
-				"interval": 1,
-				"startTime": "2024-06-11T11:57:00",
-				"timeZone": "Singapore Standard Time",
-				"schedule": {
-					"minutes": [
-						50
-					],
-					"hours": [
-						16
-					]
-				}
+				"frequency": "Minute",
+				"interval": 30,
+				"startTime": "2024-07-26T00:00:00",
+				"timeZone": "Singapore Standard Time"
 			}
 		}
 	}
