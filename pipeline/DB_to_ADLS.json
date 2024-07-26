@@ -2284,22 +2284,8 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "sql_server_sink",
-											"type": "DatasetReference",
-											"parameters": {
-												"container": {
-													"value": "@pipeline().parameters.container",
-													"type": "Expression"
-												},
-												"path": {
-													"value": "@pipeline().parameters.landing_file_path",
-													"type": "Expression"
-												},
-												"file": {
-													"value": "@pipeline().parameters.landing_file_name",
-													"type": "Expression"
-												}
-											}
+											"referenceName": "sql_server_sink_compressed",
+											"type": "DatasetReference"
 										}
 									]
 								},
