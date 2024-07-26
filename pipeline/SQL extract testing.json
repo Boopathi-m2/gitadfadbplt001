@@ -79,7 +79,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "select \r\n\tDeptID ,\r\n\tDeptCode  ,\r\n\tDeptName  ,\r\n\tDeptNameEN  ,\r\n\tParentID  ,\r\n\tLevelID  ,\r\n\tSortID ,\r\n\tStatus ,\r\n\tApplicationID ,\r\n\tCol1  ,\r\n\tCol2  ,\r\n\tCol3  ,\r\n\tVersion  ,\r\n\tOrgPath ,\r\n\tOrgType  ,\r\n\tCostCenter  ,\r\n\tCostCenterName ,\r\n\tLocationCode ,\r\n\tOrgCode  ,\r\n\tCreateUserID  ,\r\n\tCreateTime   ,\r\n\tLastModifyUserID  ,\r\n\tLastModifyTime  \r\n from JNJ_TPM.[dbo].[Sys_Department];",
+						"sqlReaderQuery": "select \r\n\tRowID \r\n\t,ContractNo\r\n\t,ExpenseID\r\n\t,Year \r\n\t,ExpenseMonth \r\n\t,FinanceMonth \r\n\t,Commitment\r\n\t,Flag\r\n\t,ApplicationID\r\n from JNJ_TPM.[dbo].[Report_BI_MonthCommitment]\r\nwhere year in (YEAR(GETDATE()),YEAR(GETDATE())-1);",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -116,8 +116,8 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "asp",
-							"path": "dev/PRO-X/transaction/",
-							"file": "Sys_Department.csv"
+							"path": "dev/PRO-X/transaction/Report_BI_MonthCommitment/",
+							"file": "Report_BI_MonthCommitment_20240726193218.csv"
 						}
 					}
 				]
