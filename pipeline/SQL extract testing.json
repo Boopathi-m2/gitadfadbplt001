@@ -5,8 +5,6 @@
 			{
 				"name": "capturesqlrds_to_adls",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -59,7 +57,7 @@
 						"parameters": {
 							"container": "asp",
 							"path": "dev/Regional_Market_Share/",
-							"file": "GBA_QSD_Market_data_extraction"
+							"file": "GBA_QSD_Market_data_extraction."
 						}
 					}
 				]
@@ -67,6 +65,8 @@
 			{
 				"name": "awsbrasgpw0001_sql_to_adls",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
