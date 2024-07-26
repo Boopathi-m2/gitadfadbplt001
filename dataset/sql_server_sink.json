@@ -42,8 +42,6 @@
 				"value": "\r\n",
 				"type": "Expression"
 			},
-			"compressionCodec": "gzip",
-			"compressionLevel": "Optimal",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": ""
