@@ -116,7 +116,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "asp",
-							"path": "dev/transaction/Sys_Department",
+							"path": "dev/PRO-X/transaction/",
 							"file": "Sys_Department.csv"
 						}
 					}
