@@ -933,7 +933,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"directory": {
-													"value": "@concat(pipeline().parameters.FtpDirectory,'archive/')",
+													"value": "@concat(pipeline().parameters.FtpDirectory,'/archive')",
 													"type": "Expression"
 												},
 												"filename": {
