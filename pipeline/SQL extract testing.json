@@ -5,6 +5,8 @@
 			{
 				"name": "capturesqlrds_to_adls",
 				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -65,8 +67,6 @@
 			{
 				"name": "awsbrasgpw0001_sql_to_adls",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -79,7 +79,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "select \r\n\tRowID \r\n\t,ContractNo\r\n\t,ExpenseID\r\n\t,Year \r\n\t,ExpenseMonth \r\n\t,FinanceMonth \r\n\t,Commitment\r\n\t,Flag\r\n\t,ApplicationID\r\n from JNJ_TPM.[dbo].[Report_BI_MonthCommitment]\r\nwhere year in (YEAR(GETDATE()),YEAR(GETDATE())-1);",
+						"sqlReaderQuery": "select \r\nID\r\n,Division\r\n,Segment\r\n,AccountGroupCode\r\n,AccountGroupName\r\n,ChannelCode\r\n,SubChannelCode\r\n,AccountCategory\r\n,AccountChainCode\r\n,AccountChainName\r\n,DirectSupplier\r\n,HeadquarterSoldToCode\r\n,DistributorCode\r\n,Status\r\n,Comment\r\n,ApplicationID\r\n,Version\r\n,LastModifyUserID\r\n,LastModifyTime\r\n,DataSource\r\n,PlanRequired\r\n,AccountGroupType\r\n,RTMChannelCode\r\n from JNJ_TPM.[dbo].[MD_AccountGroup];",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -112,12 +112,12 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "sql_server_sink",
+						"referenceName": "sql_server_sink_compressed",
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "asp",
-							"path": "dev/PRO-X/transaction/Report_BI_MonthCommitment/",
-							"file": "Report_BI_MonthCommitment_20240726193218.csv"
+							"path": "dev/PRO-X/transaction/MD_AccountGroup",
+							"file": "MD_AccountGroup.csv"
 						}
 					}
 				]
