@@ -79,7 +79,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
-						"sqlReaderQuery": "select \r\nID\r\n,Division\r\n,Segment\r\n,AccountGroupCode\r\n,AccountGroupName\r\n,ChannelCode\r\n,SubChannelCode\r\n,AccountCategory\r\n,AccountChainCode\r\n,AccountChainName\r\n,DirectSupplier\r\n,HeadquarterSoldToCode\r\n,DistributorCode\r\n,Status\r\n,Comment\r\n,ApplicationID\r\n,Version\r\n,LastModifyUserID\r\n,LastModifyTime\r\n,DataSource\r\n,PlanRequired\r\n,AccountGroupType\r\n,RTMChannelCode\r\n from JNJ_TPM.[dbo].[MD_AccountGroup];",
+						"sqlReaderQuery": "select \r\n\tID \r\n\t,Division \r\n\t,Segment \r\n\t,CustomerCode \r\n\t,REPLACE(REPLACE(replace(CustomerName,',',' '), CHAR(13), ''), CHAR(10), '')as CustomerName\r\n\t,CustomerNameLocal \r\n\t,CustomerType \r\n\t,CustomerTelephone\r\n\t,CustomerAddress \r\n\t,CityCode \r\n\t,ChannelCode \r\n\t,SubChannelCode \r\n\t,AccountGroupCode \r\n\t,DeptCode \r\n\t,SalesArea\r\n\t,VendorCode  \r\n\t,DirectSupplier \r\n\t,AcctAtCust  \r\n\t,BlockCompany\r\n\t,BlockOrder\r\n\t,HeadquarterSoldToCode \r\n\t,replace(DistributorCode,',',' ') as DistributorCode\r\n\t,IsHighRisk\r\n\t,Status \r\n\t,Comment \r\n\t,ORG\r\n\t,CustomerHead \r\n\t,AccountGroupHeader \r\n\t,TaxNumber \r\n\t,Buslic \r\n\t,MobilePhone \r\n\t,IsFollow \r\n\t,FollowDate \r\n\t,SpOpenID \r\n\t,PNOpenID \r\n\t,Contact \r\n\t,Post \r\n\t,IsNew \r\n\t,FinanceYear\r\n\t,SalesOrgCode\r\n\t,SalesOrgName\r\n\t,ApplicationID \r\n\t,Version \r\n\t,LastModifyUserID \r\n\t,LastModifyTime \r\n\t,CityName \r\n\t,CityCluster \r\n\t,CityClusterName \r\n\t,ProvinceCode \r\n\t,ProvinceName \r\n\t,NewTime \r\n\t,DataSource \r\n\t,PayerCode \r\n\t,PayerName \r\n\t,HQCityCode \r\n\t,IndirectStoreTye \r\n\t,AccountGroupType \r\n\t,RTMChannelCode \r\n\t,VATCode\r\nfrom JNJ_TPM.[dbo].[MD_Customer];",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -116,8 +116,8 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "asp",
-							"path": "dev/PRO-X/transaction/MD_AccountGroup",
-							"file": "MD_AccountGroup.csv"
+							"path": "dev/PRO-X/transaction/MD_Customer",
+							"file": "MD_Customer.csv.gz"
 						}
 					}
 				]
