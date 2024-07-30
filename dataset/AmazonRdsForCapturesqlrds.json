@@ -10,10 +10,6 @@
 		},
 		"annotations": [],
 		"type": "AmazonRdsForSqlServerTable",
-		"schema": [],
-		"typeProperties": {
-			"schema": "bpwarehouse",
-			"table": "GBA_QSD_Market"
-		}
+		"schema": []
 	}
 }
