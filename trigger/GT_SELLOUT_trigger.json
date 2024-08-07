@@ -1,5 +1,5 @@
 {
-	"name": "KR_OTC_INV_ETL_FRAMEWORK_trigger",
+	"name": "GT_SELLOUT_trigger",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
@@ -10,7 +10,7 @@
 					"type": "PipelineReference"
 				},
 				"parameters": {
-					"category": "KR_OTC_INV_ETL_FRAMEWORK"
+					"category": "GT_SELLOUT"
 				}
 			}
 		],
@@ -19,14 +19,14 @@
 			"recurrence": {
 				"frequency": "Day",
 				"interval": 1,
-				"startTime": "2024-07-03T15:37:00",
+				"startTime": "2024-06-11T11:48:00",
 				"timeZone": "Singapore Standard Time",
 				"schedule": {
 					"minutes": [
 						0
 					],
 					"hours": [
-						18
+						11
 					]
 				}
 			}
