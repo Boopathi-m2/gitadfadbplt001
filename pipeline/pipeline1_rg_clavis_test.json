@@ -53,7 +53,7 @@
 						"parameters": {
 							"container": "asp",
 							"path": "dev/Regional_Clavis/transaction/GDL_files/wh_clavis_gb_search_terms_results",
-							"file": "wh_clavis_gb_search_terms_results.gz"
+							"file": "wh_clavis_gb_search_terms_results.csv"
 						}
 					}
 				]
