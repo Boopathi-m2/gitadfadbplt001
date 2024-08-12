@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AmazonRedshiftSource",
-						"query": "Select count(*) as count_gb_products from ecomm_whse.wh_clavis_gb_products"
+						"query": "select case when count_gb_products=0 then 0\r\nelse 1\r\nend as count_gb_products from ( \r\nSelect count(*) as count_gb_products from ecomm_whse.wh_clavis_gb_products);"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
