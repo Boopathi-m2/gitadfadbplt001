@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AmazonRedshiftSource",
-						"query": "select * from ecomm_whse.wh_clavis_gb_search_terms_results WHERE CAST(SUBSTRING(TRUNC(report_date),0,5) ||SUBSTRING(TRUNC(report_date),6,2) AS INTEGER) >\r\nCAST(TO_CHAR(trunc(DATEADD ('MONTH',-3,sysdate)),'YYYYMM') AS INTEGER) limit 1000;"
+						"query": "select * from ecomm_whse.wh_clavis_gb_search_terms_results WHERE CAST(SUBSTRING(TRUNC(report_date),0,5) ||SUBSTRING(TRUNC(report_date),6,2) AS INTEGER) >\r\nCAST(TO_CHAR(trunc(DATEADD ('MONTH',-3,sysdate)),'YYYYMM') AS INTEGER);"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
@@ -53,7 +53,7 @@
 						"parameters": {
 							"container": "asp",
 							"path": "dev/Regional_Clavis/transaction/GDL_files/wh_clavis_gb_search_terms_results",
-							"file": "wh_clavis_gb_search_terms_results.csv.zip"
+							"file": "wh_clavis_gb_search_terms_results.gz"
 						}
 					}
 				]
