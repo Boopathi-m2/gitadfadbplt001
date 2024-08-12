@@ -7,6 +7,10 @@
 		},
 		"annotations": [],
 		"type": "AmazonRedshiftTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": "ecomm_whse",
+			"table": "wh_clavis_gb_products"
+		}
 	}
 }
