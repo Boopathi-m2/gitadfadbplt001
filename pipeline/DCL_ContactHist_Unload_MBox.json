@@ -1276,15 +1276,8 @@
 									"type": "BinarySource",
 									"storeSettings": {
 										"type": "AzureBlobFSReadSettings",
-										"recursive": true,
-										"wildcardFolderPath": {
-											"value": "@{variables('parentFolder')}/@{activity('read parameters').output.value[0].target_folder_path}",
-											"type": "Expression"
-										},
-										"wildcardFileName": {
-											"value": "@{variables('date_for_zip')}.zip",
-											"type": "Expression"
-										}
+										"recursive": false,
+										"deleteFilesAfterCompletion": false
 									},
 									"formatSettings": {
 										"type": "BinaryReadSettings"
