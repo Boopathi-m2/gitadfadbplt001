@@ -51,7 +51,6 @@
 						"referenceName": "JPDCL_Binary_SFTP_Sink",
 						"type": "DatasetReference",
 						"parameters": {
-							"directory": "DCL_CI_NEXT_CMS_PROBANCE",
 							"filename": "seed.txt"
 						}
 					}
