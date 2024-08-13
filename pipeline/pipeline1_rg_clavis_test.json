@@ -17,12 +17,14 @@
 				"typeProperties": {
 					"source": {
 						"type": "AmazonRedshiftSource",
-						"query": "select count(*) from ecomm_whse.wh_clavis_gb_search_terms_results WHERE CAST(SUBSTRING(TRUNC(report_date),0,5) ||SUBSTRING(TRUNC(report_date),6,2) AS INTEGER) >\r\nCAST(TO_CHAR(trunc(DATEADD ('MONTH',-3,sysdate)),'YYYYMM') AS INTEGER);"
+						"query": "select * from ecomm_whse.wh_clavis_gb_search_terms_results WHERE CAST(SUBSTRING(TRUNC(report_date),0,5) ||SUBSTRING(TRUNC(report_date),6,2) AS INTEGER) >\r\nCAST(TO_CHAR(trunc(DATEADD ('MONTH',-3,sysdate)),'YYYYMM') AS INTEGER);"
 					},
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
+							"type": "AzureBlobFSWriteSettings",
+							"maxConcurrentConnections": 5,
+							"copyBehavior": "FlattenHierarchy"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
