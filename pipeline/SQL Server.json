@@ -2560,8 +2560,8 @@
 				"type": "String"
 			},
 			"extract_month": {
-				"type": "Integer",
-				"defaultValue": 0
+				"type": "String",
+				"defaultValue": "0"
 			}
 		},
 		"folder": {

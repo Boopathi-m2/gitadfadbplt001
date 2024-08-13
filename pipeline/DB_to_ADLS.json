@@ -2659,7 +2659,7 @@
 										"source": {
 											"type": "AmazonRedshiftSource",
 											"query": {
-												"value": "@pipeline().parameters.source_query",
+												"value": "@replace(pipeline().parameters.source_query,'<<extract_month>>',pipeline().parameters.extract_month)",
 												"type": "Expression"
 											}
 										},
@@ -2903,8 +2903,8 @@
 				"type": "string"
 			},
 			"extract_month": {
-				"type": "int",
-				"defaultValue": 0
+				"type": "string",
+				"defaultValue": "0"
 			}
 		},
 		"variables": {
