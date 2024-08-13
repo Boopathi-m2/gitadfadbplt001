@@ -1748,6 +1748,10 @@
 						"truncate_and_load": {
 							"value": "@activity('read parameters').output.value[0].TRUNCATE_AND_LOAD",
 							"type": "Expression"
+						},
+						"extract_month": {
+							"value": "@variables('extract_month')",
+							"type": "Expression"
 						}
 					}
 				}
@@ -2556,8 +2560,8 @@
 				"type": "String"
 			},
 			"extract_month": {
-				"type": "String",
-				"defaultValue": "0"
+				"type": "Integer",
+				"defaultValue": 0
 			}
 		},
 		"folder": {
