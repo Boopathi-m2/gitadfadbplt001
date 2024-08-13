@@ -1310,7 +1310,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"directory": "@{activity('read parameters').output.value[0].sftp_folder_path}",
-										"filename": "test.zip"
+										"filename": "adf_test_@{variables('date_for_zip')}.zip"
 									}
 								}
 							]
