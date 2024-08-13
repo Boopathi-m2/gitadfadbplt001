@@ -16,13 +16,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "BinarySource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
-							"enablePartitionDiscovery": false
+							"recursive": true
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
+							"type": "BinaryReadSettings"
 						}
 					},
 					"sink": {
@@ -37,12 +37,12 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "adls_src",
+						"referenceName": "BinarySource",
 						"type": "DatasetReference",
 						"parameters": {
-							"src_path": "prd",
-							"src_container": "jpn",
-							"src_filename": "seed.txt"
+							"container": "jpn",
+							"directory": "prd",
+							"sourceFile": "seed.txt"
 						}
 					}
 				],
