@@ -42,7 +42,7 @@
 						"parameters": {
 							"container": "jpn",
 							"directory": "prd",
-							"sourceFile": "seed.txt"
+							"sourceFile": "20240812153610.zip"
 						}
 					}
 				],
@@ -52,7 +52,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"directory": "DCLJP_JAPAN_DCL_EDI_ci_next_cms_probance",
-							"filename": "seed.txt"
+							"filename": "test_20240812153610.zip"
 						}
 					}
 				]
