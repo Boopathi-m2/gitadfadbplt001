@@ -153,14 +153,10 @@
 			"adls_path": {
 				"type": "string",
 				"defaultValue": "akash_s3_to_adls_test"
-			},
-			"number_of_days": {
-				"type": "int",
-				"defaultValue": 730
 			}
 		},
 		"folder": {
-			"name": "Miscellaneous Pipelines"
+			"name": "Miscellaneous Pipelines/s3_to_adls_file"
 		},
 		"annotations": []
 	}
