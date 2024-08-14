@@ -1,0 +1,42 @@
+{
+	"name": "s3_to_adls_file_movement",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "S3FolderDataset",
+						"type": "DatasetReference",
+						"parameters": {
+							"s3bucket": "itx-arm-conapdna-aspac-prod",
+							"s3directory": "raw-data-lake/travel_retail/transaction_files/archive/"
+						}
+					},
+					"fieldList": [],
+					"storeSettings": {
+						"type": "AmazonS3ReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Miscellaneous Pipelines"
+		},
+		"annotations": []
+	}
+}
