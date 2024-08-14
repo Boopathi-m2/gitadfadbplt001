@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get Metadata1",
+				"name": "get_the_list_of_file",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -29,11 +29,98 @@
 					],
 					"storeSettings": {
 						"type": "AmazonS3ReadSettings",
+						"modifiedDatetimeStart": {
+							"value": "@formatDateTime(addDays(utcnow(), -730), 'yyyy-MM-dd')",
+							"type": "Expression"
+						},
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
 					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "get_the_list_of_file",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('get_the_list_of_file').output.itemName",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "s3_to_adls_file_transfer",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "BinarySource",
+									"storeSettings": {
+										"type": "AmazonS3ReadSettings",
+										"recursive": true
+									},
+									"formatSettings": {
+										"type": "BinaryReadSettings"
+									}
+								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "s3_source_binary",
+									"type": "DatasetReference",
+									"parameters": {
+										"bucket": "itx-arm-conapdna-aspac-prod",
+										"path": "raw-data-lake/travel_retail/transaction_files/archive/",
+										"file": {
+											"value": "@item().name\n\n\n",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "adls_sink_binary",
+									"type": "DatasetReference",
+									"parameters": {
+										"adls_container": {
+											"value": "asp",
+											"type": "Expression"
+										},
+										"adls_path": {
+											"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'prd', pipeline().globalParameters.environment)}/test/",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
 				}
 			}
 		],
