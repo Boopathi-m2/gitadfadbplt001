@@ -35,6 +35,7 @@
 					],
 					"storeSettings": {
 						"type": "AmazonS3ReadSettings",
+						"recursive": true,
 						"modifiedDatetimeStart": {
 							"value": "@formatDateTime(addDays(utcnow(), -730), 'yyyy-MM-dd')",
 							"type": "Expression"
@@ -151,7 +152,7 @@
 			},
 			"adls_path": {
 				"type": "string",
-				"defaultValue": "akash_s3_adls_test"
+				"defaultValue": "test"
 			},
 			"number_of_days": {
 				"type": "int",
