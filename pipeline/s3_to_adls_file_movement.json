@@ -19,8 +19,14 @@
 						"referenceName": "S3FolderDataset",
 						"type": "DatasetReference",
 						"parameters": {
-							"s3bucket": "itx-arm-conapdna-aspac-prod",
-							"s3directory": "raw-data-lake/travel_retail/transaction_files/archive/"
+							"s3bucket": {
+								"value": "@pipeline().parameters.s3_bucket",
+								"type": "Expression"
+							},
+							"s3directory": {
+								"value": "@pipeline().parameters.s3_path",
+								"type": "Expression"
+							}
 						}
 					},
 					"fieldList": [
@@ -94,8 +100,14 @@
 									"referenceName": "s3_source_binary",
 									"type": "DatasetReference",
 									"parameters": {
-										"bucket": "itx-arm-conapdna-aspac-prod",
-										"path": "raw-data-lake/travel_retail/transaction_files/archive/",
+										"bucket": {
+											"value": "@pipeline().parameters.s3_bucket",
+											"type": "Expression"
+										},
+										"path": {
+											"value": "@pipeline().parameters.s3_path",
+											"type": "Expression"
+										},
 										"file": {
 											"value": "@item().name\n\n\n",
 											"type": "Expression"
@@ -109,11 +121,11 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"adls_container": {
-											"value": "asp",
+											"value": "@pipeline().parameters.adls_container",
 											"type": "Expression"
 										},
 										"adls_path": {
-											"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'prd', pipeline().globalParameters.environment)}/test/",
+											"value": "@{if(equals(pipeline().globalParameters.environment, 'prod'),'prd', pipeline().globalParameters.environment)}/pipeline().parameters.adls_path",
 											"type": "Expression"
 										}
 									}
@@ -124,6 +136,25 @@
 				}
 			}
 		],
+		"parameters": {
+			"s3_bucket": {
+				"type": "string",
+				"defaultValue": "itx-arm-conapdna-aspac-prod"
+			},
+			"s3_path": {
+				"type": "string",
+				"defaultValue": "raw-data-lake/travel_retail/transaction_files/archive/"
+			},
+			"adls_container": {
+				"type": "string"
+			},
+			"adls_path": {
+				"type": "string"
+			},
+			"number_of_days": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Miscellaneous Pipelines"
 		},
