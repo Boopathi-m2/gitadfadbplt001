@@ -151,7 +151,7 @@
 			},
 			"adls_path": {
 				"type": "string",
-				"defaultValue": "test"
+				"defaultValue": "akash_s3_adls_test"
 			},
 			"number_of_days": {
 				"type": "int",
