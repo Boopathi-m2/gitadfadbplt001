@@ -23,7 +23,10 @@
 							"s3directory": "raw-data-lake/travel_retail/transaction_files/archive/"
 						}
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems",
+						"lastModified"
+					],
 					"storeSettings": {
 						"type": "AmazonS3ReadSettings",
 						"enablePartitionDiscovery": false
