@@ -146,13 +146,16 @@
 				"defaultValue": "raw-data-lake/travel_retail/transaction_files/archive/"
 			},
 			"adls_container": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "asp"
 			},
 			"adls_path": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "test"
 			},
 			"number_of_days": {
-				"type": "string"
+				"type": "int",
+				"defaultValue": 730
 			}
 		},
 		"folder": {
