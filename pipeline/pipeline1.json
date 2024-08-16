@@ -22,7 +22,7 @@
 							"src_path": "dev/Regional_Clavis/transaction/GDL_files/wh_clavis_gb_products",
 							"src_container": "asp",
 							"src_filename": {
-								"value": "*wh_clavis_gb_products*.csv\n",
+								"value": "wh_clavis_gb_products*.csv\n",
 								"type": "Expression"
 							}
 						}
