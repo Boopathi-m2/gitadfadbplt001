@@ -2698,7 +2698,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "mysql_server_sink_multifile",
+											"referenceName": "mysql_server_sink_multifile_compressed",
 											"type": "DatasetReference",
 											"parameters": {
 												"container": {
