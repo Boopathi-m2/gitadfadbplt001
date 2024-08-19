@@ -2670,11 +2670,6 @@
 											},
 											"formatSettings": {
 												"type": "DelimitedTextWriteSettings",
-												"maxRowsPerFile": 500000,
-												"fileNamePrefix": {
-													"value": "@pipeline().parameters.landing_file_name",
-													"type": "Expression"
-												},
 												"quoteAllText": true,
 												"fileExtension": ".csv"
 											}
