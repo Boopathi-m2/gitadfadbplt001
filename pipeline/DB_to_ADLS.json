@@ -2671,7 +2671,7 @@
 											},
 											"formatSettings": {
 												"type": "DelimitedTextWriteSettings",
-												"maxRowsPerFile": 100000,
+												"maxRowsPerFile": 500000,
 												"fileNamePrefix": {
 													"value": "@pipeline().parameters.landing_file_name",
 													"type": "Expression"
