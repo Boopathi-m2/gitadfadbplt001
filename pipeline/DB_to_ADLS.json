@@ -2666,7 +2666,9 @@
 										"sink": {
 											"type": "DelimitedTextSink",
 											"storeSettings": {
-												"type": "AzureBlobFSWriteSettings"
+												"type": "AzureBlobFSWriteSettings",
+												"copyBehavior": "PreserveHierarchy",
+												"blockSizeInMB": 50
 											},
 											"formatSettings": {
 												"type": "DelimitedTextWriteSettings",
