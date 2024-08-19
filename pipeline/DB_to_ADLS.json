@@ -2667,7 +2667,7 @@
 											"type": "DelimitedTextSink",
 											"storeSettings": {
 												"type": "AzureBlobFSWriteSettings",
-												"blockSizeInMB": 50
+												"blockSizeInMB": 30
 											},
 											"formatSettings": {
 												"type": "DelimitedTextWriteSettings",
@@ -2677,7 +2677,7 @@
 													"type": "Expression"
 												},
 												"quoteAllText": true,
-												"fileExtension": ".txt"
+												"fileExtension": ".csv"
 											}
 										},
 										"enableStaging": false,
@@ -2698,7 +2698,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "sql_server_sink",
+											"referenceName": "mysql_server_sink_multifile",
 											"type": "DatasetReference",
 											"parameters": {
 												"container": {
