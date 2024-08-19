@@ -2697,7 +2697,7 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "mysql_server_sink_multifile_compressed",
+											"referenceName": "sql_server_sink_compressed",
 											"type": "DatasetReference",
 											"parameters": {
 												"container": {
@@ -2706,6 +2706,10 @@
 												},
 												"path": {
 													"value": "@pipeline().parameters.landing_file_path",
+													"type": "Expression"
+												},
+												"file": {
+													"value": "@pipeline().parameters.landing_file_name",
 													"type": "Expression"
 												}
 											}
