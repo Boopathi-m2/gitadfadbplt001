@@ -1473,10 +1473,6 @@
 												"path": {
 													"value": "@pipeline().parameters.landing_file_path",
 													"type": "Expression"
-												},
-												"file": {
-													"value": "@pipeline().parameters.landing_file_name",
-													"type": "Expression"
 												}
 											}
 										}
@@ -1679,10 +1675,6 @@
 												"path": {
 													"value": "@pipeline().parameters.landing_file_path",
 													"type": "Expression"
-												},
-												"file": {
-													"value": "@pipeline().parameters.landing_file_name",
-													"type": "Expression"
 												}
 											}
 										}
@@ -1882,10 +1874,6 @@
 												},
 												"path": {
 													"value": "@pipeline().parameters.landing_file_path",
-													"type": "Expression"
-												},
-												"file": {
-													"value": "@pipeline().parameters.landing_file_name",
 													"type": "Expression"
 												}
 											}
@@ -2088,10 +2076,6 @@
 												},
 												"path": {
 													"value": "@pipeline().parameters.landing_file_path",
-													"type": "Expression"
-												},
-												"file": {
-													"value": "@pipeline().parameters.landing_file_name",
 													"type": "Expression"
 												}
 											}
@@ -2499,10 +2483,6 @@
 												"path": {
 													"value": "@pipeline().parameters.landing_file_path",
 													"type": "Expression"
-												},
-												"file": {
-													"value": "@pipeline().parameters.landing_file_name",
-													"type": "Expression"
 												}
 											}
 										}
@@ -2706,10 +2686,6 @@
 													"type": "Expression"
 												},
 												"path": {
-													"value": "@pipeline().parameters.landing_file_path",
-													"type": "Expression"
-												},
-												"file": {
 													"value": "@pipeline().parameters.landing_file_path",
 													"type": "Expression"
 												}
