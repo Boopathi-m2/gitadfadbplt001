@@ -2667,11 +2667,12 @@
 											"type": "DelimitedTextSink",
 											"storeSettings": {
 												"type": "AzureBlobFSWriteSettings",
-												"copyBehavior": "PreserveHierarchy",
+												"copyBehavior": "FlattenHierarchy",
 												"blockSizeInMB": 50
 											},
 											"formatSettings": {
 												"type": "DelimitedTextWriteSettings",
+												"maxRowsPerFile": 50000,
 												"quoteAllText": true,
 												"fileExtension": ".txt"
 											}
