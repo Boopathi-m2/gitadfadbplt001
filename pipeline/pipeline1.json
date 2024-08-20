@@ -113,7 +113,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('get file name').output.childItems",
+						"value": "@activity('get file name_copy1').output.childItems",
 						"type": "Expression"
 					},
 					"condition": {
