@@ -449,11 +449,18 @@
 						{
 							"name": "If file extn valiation",
 							"type": "IfCondition",
-							"dependsOn": [],
+							"dependsOn": [
+								{
+									"activity": "Set fileExtnVal",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@or(equals(activity('read parameters').output.value[0].validation,'0'), and(equals(activity('read parameters').output.value[0].validation,'1'), contains(item().name,activity('read parameters').output.value[0].source_extn)))",
+									"value": "@or(equals(variables('fileExtnVal'),'0'), and(equals(variables('fileExtnVal'),'1'), contains(item().name,activity('read parameters').output.value[0].source_extn)))",
 									"type": "Expression"
 								},
 								"ifFalseActivities": [
@@ -701,6 +708,23 @@
 										}
 									}
 								]
+							}
+						},
+						{
+							"name": "Set fileExtnVal",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "fileExtnVal",
+								"value": {
+									"value": "@split(activity('read parameters').output.value[0].validation,'-')[1]",
+									"type": "Expression"
+								}
 							}
 						}
 					]
