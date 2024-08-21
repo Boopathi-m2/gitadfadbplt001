@@ -1,10 +1,77 @@
 {
 	"name": "pipeline2",
 	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "ext",
+					"value": {
+						"value": "@split(pipeline().parameters.flag,'-')[1]",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1_copy1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "ext",
+					"value": {
+						"value": "@split(pipeline().parameters.flag,'-')[2]",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1_copy2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "ext",
+					"value": {
+						"value": "@split(pipeline().parameters.flag,'-')[3]",
+						"type": "Expression"
+					}
+				}
+			}
+		],
 		"parameters": {
 			"flag": {
 				"type": "string",
-				"defaultValue": "1-1-1"
+				"defaultValue": "1-2-3"
 			}
 		},
 		"variables": {
