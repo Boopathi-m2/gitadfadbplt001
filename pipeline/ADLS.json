@@ -1097,6 +1097,9 @@
 			},
 			"queryOnSource": {
 				"type": "String"
+			},
+			"fileExtnVal": {
+				"type": "String"
 			}
 		},
 		"folder": {
