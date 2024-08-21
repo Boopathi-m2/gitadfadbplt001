@@ -1079,7 +1079,7 @@
 		"parameters": {
 			"category": {
 				"type": "string",
-				"defaultValue": "test_dfs_hainan"
+				"defaultValue": "test_shilla"
 			},
 			"usecase_id": {
 				"type": "int",
@@ -1091,7 +1091,7 @@
 			},
 			"process_id": {
 				"type": "int",
-				"defaultValue": 3
+				"defaultValue": 1
 			},
 			"phase_id": {
 				"type": "int",
