@@ -110,8 +110,6 @@
 			{
 				"name": "converttocsv sheetwise",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -156,10 +154,10 @@
 						"referenceName": "adls_srcexcel_sheetname",
 						"type": "DatasetReference",
 						"parameters": {
-							"src_path": "dev/transactional/DFS",
-							"src_filename": "Hainan Vendor Sales Report for Asian.xlsx",
-							"src_sheetname": "Hainan Vendor Sales Report for ",
-							"src_container": "asp"
+							"src_path": "dev/master/sellout",
+							"src_filename": "MY_GT_Distributor_Hierarchy.xlsx",
+							"src_sheetname": "Sheet2",
+							"src_container": "mys"
 						}
 					}
 				],
@@ -168,9 +166,9 @@
 						"referenceName": "csv",
 						"type": "DatasetReference",
 						"parameters": {
-							"target_path": "dev/transactional/DFS",
-							"target_filename": "Hainan Vendor Sales Report for Asian.xlsx",
-							"target_container": "asp"
+							"target_path": "dev/master/sellout",
+							"target_filename": "MY_GT_Distributor_Hierarchy.csv",
+							"target_container": "mys"
 						}
 					}
 				]
