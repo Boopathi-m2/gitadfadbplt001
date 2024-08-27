@@ -154,10 +154,10 @@
 						"referenceName": "adls_srcexcel_sheetname",
 						"type": "DatasetReference",
 						"parameters": {
-							"src_path": "dev/Pacific_reg_inv/transaction/CHS/",
-							"src_filename": "ManufacturersReport.xlsx",
-							"src_sheetname": "ManufacturersReport",
-							"src_container": "pac",
+							"src_path": "dev/transactional/",
+							"src_filename": "DFS_202004.xlsx",
+							"src_sheetname": "DCL",
+							"src_container": "asp",
 							"src_startRange": "A1"
 						}
 					}
@@ -167,9 +167,9 @@
 						"referenceName": "csv",
 						"type": "DatasetReference",
 						"parameters": {
-							"target_path": "dev/Pacific_reg_inv/transaction/CHS/",
-							"target_filename": "ManufacturersReport.csv",
-							"target_container": "pac"
+							"target_path": "dev/transactional/",
+							"target_filename": "DFS_202004.csv",
+							"target_container": "asp"
 						}
 					}
 				]
