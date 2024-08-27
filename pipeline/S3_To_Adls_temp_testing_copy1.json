@@ -121,14 +121,11 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "ExcelSource",
 						"storeSettings": {
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"sink": {
@@ -154,12 +151,14 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "adls_src",
+						"referenceName": "adls_srcexcel_sheetname",
 						"type": "DatasetReference",
 						"parameters": {
 							"src_path": "dev/Pacific_reg_inv/transaction/CHS/",
+							"src_filename": "ManufacturersReport.xlsx",
+							"src_sheetname": "ManufacturersReport",
 							"src_container": "pac",
-							"src_filename": "ManufacturersReport.xlsx"
+							"src_startRange": "A1"
 						}
 					}
 				],
