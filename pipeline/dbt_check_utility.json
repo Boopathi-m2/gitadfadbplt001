@@ -203,7 +203,7 @@
 											{
 												"type": "Query",
 												"text": {
-													"value": "select * from core_integration.dbtjobs_test_cdc_metadata where tempid='@{pipeline().parameters.parameters.value[0].tempId}';\n",
+													"value": "select * from core_integration.dbtjobs_test_cdc_metadata where tempid='888';\n",
 													"type": "Expression"
 												}
 											}
@@ -239,7 +239,7 @@
 											{
 												"type": "Query",
 												"text": {
-													"value": "call core_integration.SP_failed_tests_models('@{pipeline().parameters.parameters.value[0].tempId}',@{variables('sp_params')});",
+													"value": "call core_integration.SP_failed_tests_models('888',@{variables('sp_params')});",
 													"type": "Expression"
 												}
 											}
