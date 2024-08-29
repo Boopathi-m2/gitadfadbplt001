@@ -973,7 +973,7 @@
 									}
 								},
 								{
-									"name": "error dbt run failed ing",
+									"name": "error dbt failed ing dq",
 									"type": "ExecutePipeline",
 									"dependsOn": [
 										{
@@ -1030,7 +1030,7 @@
 									}
 								},
 								{
-									"name": "Send Error notification dbt ing build fail_copy1",
+									"name": "Send Error notification dbt ing dq fail",
 									"type": "ExecutePipeline",
 									"state": "Inactive",
 									"onInactiveMarkAs": "Succeeded",
