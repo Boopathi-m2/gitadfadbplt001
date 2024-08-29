@@ -424,17 +424,20 @@
 									},
 									"status": "FAIL",
 									"supportMessage": {
-										"value": "Error due to DQ Checks in DBT job (@{pipeline().parameters.dbt_jobid}): \\n\n**PROCESS_ID**:  @{pipeline().parameters.process_id}  \\n\n**CATEGORY**: @{pipeline().parameters.category} \\n\n**PHASE_ID**:   @{pipeline().parameters.phase_id}   \\n\n**USECASE_ID**: @{pipeline().parameters.usecase_id} \\n\n**SEQUENCE_ID**: @{pipeline().parameters.sequence_id} \\n\n**DATASET**: @{item().model_name} \\n\n**ERROR**: _Dbt job failed due to DQ check, check on run_id @{pipeline().parameters.run_id} and retry. Download the file with this URL - @{activity('Script Fetch presigned url').output.resultSets[0].rows[0].URL}_\n@{if(or(equals(pipeline().parameters.parameters.value[0].container, 'kor'), false),concat('**FILE_NAMES**: ',activity('Script fetch file names').output.resultSets[0].rows[0].FILE_NAMES), '')}",
+										"value": "Error due to DQ Checks in DBT job (@{pipeline().parameters.dbt_jobid}): \\n\n**PROCESS_ID**:  @{pipeline().parameters.process_id}  \\n\n**CATEGORY**: @{pipeline().parameters.category} \\n\n**PHASE_ID**:   @{pipeline().parameters.phase_id}   \\n\n**USECASE_ID**: @{pipeline().parameters.usecase_id} \\n\n**SEQUENCE_ID**: @{pipeline().parameters.sequence_id} \\n\n**DATASET**: @{item().model_name} \\n\n**ERROR**: _Dbt job failed due to DQ check, check on run_id @{pipeline().parameters.run_id} and retry. Download the file with this URL - @{activity('Script Fetch presigned url').output.resultSets[0].rows[0].URL}_ \\n\n@{if(or(equals(pipeline().parameters.parameters.value[0].container, 'phl'), false),concat('**FILE_NAMES**: ',activity('Script fetch file names').output.resultSets[0].rows[0].FILE_NAMES), '')}",
 										"type": "Expression"
 									},
 									"isBusinessNotification": "Yes",
 									"isSupportNotification": "Yes",
 									"businessMessage": {
-										"value": "Error due to Data Quality Checks in DBT job (@{pipeline().parameters.dbt_jobid}): \\n\n**ERROR**: _Data load failed for @{item().model_name}. Please check the failed records here @{activity('Script Fetch presigned url').output.resultSets[0].rows[0].URL}_ \\n \n@{if(or(equals(pipeline().parameters.parameters.value[0].container, 'kor'), false),concat('Kindly fix and reupload these files - ',activity('Script fetch file names').output.resultSets[0].rows[0].FILE_NAMES), 'Kindly fix and reupload.')}",
+										"value": "Error due to Data Quality Checks in DBT job (@{pipeline().parameters.dbt_jobid}): \\n\n**ERROR**: _Data load failed for @{item().model_name}. Please check the failed records here @{activity('Script Fetch presigned url').output.resultSets[0].rows[0].URL}_ \\n \n@{if(or(equals(pipeline().parameters.parameters.value[0].container, 'phl'), false),concat('Kindly fix and reupload these files - ',activity('Script fetch file names').output.resultSets[0].rows[0].FILE_NAMES), 'Kindly fix and reupload.')}",
 										"type": "Expression"
 									},
 									"isError": "Yes",
-									"container": "chn",
+									"container": {
+										"value": "@pipeline().parameters.parameters.value[0].container",
+										"type": "Expression"
+									},
 									"fileUrl": {
 										"value": "@{activity('Script Fetch presigned url').output.resultSets[0].rows[0].URL}",
 										"type": "Expression"
@@ -652,7 +655,7 @@
 									{
 										"type": "Query",
 										"text": {
-											"value": "@if(or(equals(pipeline().parameters.parameters.value[0].container, 'kor'), false),replace(activity('Script3').output.resultSets[0].rows[0].QUERY,'*','LISTAGG(DISTINCT file_name, '', '') as file_names'), 'Select 1')",
+											"value": "@if(or(equals(pipeline().parameters.parameters.value[0].container, 'phl'), false),replace(activity('Script3').output.resultSets[0].rows[0].QUERY,'*','LISTAGG(DISTINCT file_name, '', '') as file_names'), 'Select 1')",
 											"type": "Expression"
 										}
 									}
@@ -684,8 +687,6 @@
 						{
 							"name": "Script5",
 							"type": "Script",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
