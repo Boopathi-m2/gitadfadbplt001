@@ -434,10 +434,7 @@
 										"type": "Expression"
 									},
 									"isError": "Yes",
-									"container": {
-										"value": "@pipeline().parameters.parameters.value[0].container",
-										"type": "Expression"
-									},
+									"container": "chn",
 									"fileUrl": {
 										"value": "@{activity('Script Fetch presigned url').output.resultSets[0].rows[0].URL}",
 										"type": "Expression"
