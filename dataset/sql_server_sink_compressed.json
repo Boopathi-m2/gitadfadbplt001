@@ -42,7 +42,6 @@
 				"value": "\r\n",
 				"type": "Expression"
 			},
-			"compressionCodec": "ZipDeflate",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": ""
