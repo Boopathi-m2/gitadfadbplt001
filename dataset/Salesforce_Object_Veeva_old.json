@@ -1,5 +1,5 @@
 {
-	"name": "Salesforce_Object_Veeva",
+	"name": "Salesforce_Object_Veeva_old",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "adfadbplt001lssfhcpveevaind001",
