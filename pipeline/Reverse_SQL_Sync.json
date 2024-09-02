@@ -420,16 +420,13 @@
 									"userProperties": [],
 									"typeProperties": {
 										"source": {
-											"type": "SnowflakeSource",
+											"type": "SnowflakeV2Source",
 											"query": {
 												"value": "@{activity('read parameters').output.value[0].source_query}",
 												"type": "Expression"
 											},
 											"exportSettings": {
-												"type": "SnowflakeExportCopyCommand",
-												"additionalCopyOptions": {
-													"MAX_FILE_SIZE": "524288000"
-												}
+												"type": "SnowflakeExportCopyCommand"
 											}
 										},
 										"sink": {
@@ -447,7 +444,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "DNA_CORE_Dataset_legacy",
+											"referenceName": "DNA_CORE_Dataset_new",
 											"type": "DatasetReference"
 										}
 									],
