@@ -371,12 +371,6 @@
 										},
 										"enableStaging": false
 									},
-									"inputs": [
-										{
-											"referenceName": "DNA_CORE_Dataset_legacy",
-											"type": "DatasetReference"
-										}
-									],
 									"outputs": [
 										{
 											"referenceName": "data_export_csv_tsv_blob_sink",
