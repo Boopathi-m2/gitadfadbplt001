@@ -320,7 +320,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "DNA_CORE_Dataset",
+									"referenceName": "DNA_CORE_Dataset_legacy",
 									"type": "DatasetReference"
 								}
 							],
