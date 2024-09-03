@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "write to audit table",
+				"name": "write to audit table old",
 				"type": "Script",
 				"dependsOn": [],
 				"policy": {
