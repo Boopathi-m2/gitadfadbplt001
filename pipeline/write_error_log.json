@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "write to error log",
+				"name": "write to error log old",
 				"type": "Script",
 				"dependsOn": [],
 				"policy": {
