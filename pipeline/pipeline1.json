@@ -1,0 +1,37 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "test",
+					"value": {
+						"value": "@if(equals(variables('container'),'jpn'),formatDateTime(convertTimeZone(adddays(pipeline().TriggerTime,-2),'UTC','Tokyo Standard Time'), 'yyyy-MM-dd HH:mm:ss'),formatDateTime(convertTimeZone(pipeline().TriggerTime,'UTC','Singapore Standard Time'), 'yyyy-MM-dd HH:mm:ss'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"container": {
+				"type": "String",
+				"defaultValue": "jpn"
+			},
+			"test": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Miscellaneous Pipelines"
+		},
+		"annotations": []
+	}
+}
