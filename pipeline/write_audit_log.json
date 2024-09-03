@@ -51,7 +51,7 @@
 									"name": "runid",
 									"type": "String",
 									"value": {
-										"value": "@if(equals(pipeline().parameters.runid, null),'','test')",
+										"value": "@if(equals(pipeline().parameters.runid, null),'',pipeline().parameters.runid)",
 										"type": "Expression"
 									},
 									"direction": "Input"
