@@ -1019,6 +1019,7 @@
 									"typeProperties": {
 										"source": {
 											"type": "SalesforceV2Source",
+											"query": "@pipeline().parameters.source_query",
 											"includeDeletedObjects": false
 										},
 										"sink": {
