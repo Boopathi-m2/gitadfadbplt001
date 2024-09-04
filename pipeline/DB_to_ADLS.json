@@ -1018,12 +1018,8 @@
 									"userProperties": [],
 									"typeProperties": {
 										"source": {
-											"type": "SalesforceSource",
-											"query": {
-												"value": "@pipeline().parameters.source_query",
-												"type": "Expression"
-											},
-											"readBehavior": "query"
+											"type": "SalesforceV2Source",
+											"includeDeletedObjects": false
 										},
 										"sink": {
 											"type": "DelimitedTextSink",
@@ -1048,7 +1044,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "Salesforce_Object_Veeva",
+											"referenceName": "Salesforce_Object_Veeva_New",
 											"type": "DatasetReference"
 										}
 									],
