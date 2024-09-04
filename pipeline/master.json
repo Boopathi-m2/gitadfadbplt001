@@ -43,7 +43,7 @@
 							],
 							"type": "Query",
 							"text": {
-								"value": "SET JOB= '@{pipeline().Pipeline}';\nSET CATEGORY = '@{pipeline().parameters.category}';\nSELECT AUDIT_LOG_ID ,PROCESS_STATUS FROM \nMETA_RAW.PROCESS_AUDIT_LOG\nWHERE JOB_NAME = $JOB\nAND CATEGORY = $CATEGORY\nQUALIFY ROW_NUMBER() OVER(ORDER BY AUDIT_LOG_ID DESC) =1\n;",
+								"value": "SELECT AUDIT_LOG_ID ,PROCESS_STATUS FROM \nMETA_RAW.PROCESS_AUDIT_LOG\nWHERE JOB_NAME = '@{pipeline().Pipeline}'\nAND CATEGORY = '@{pipeline().parameters.category}'\nQUALIFY ROW_NUMBER() OVER(ORDER BY AUDIT_LOG_ID DESC) =1\n;",
 								"type": "Expression"
 							}
 						}
