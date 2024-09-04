@@ -1,0 +1,12 @@
+{
+	"name": "Salesforce_Object_Veeva_New",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "adfadbplt001lssfhcpveevaind002",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SalesforceV2Object",
+		"schema": []
+	}
+}
