@@ -1,0 +1,68 @@
+{
+	"name": "pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "salesforce_to_adls",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SalesforceV2Source",
+						"query": "SELECT \n\tId,\n\tUsername,\n\tName,\n\tCompanyName,\n\tDivision,\n\tDepartment,\n\tTITLE,\n\tCountry,\n\t'' AS ADDRESS,\n\tEmail,\n\tPHONE,\n\tMobilePhone,\n\tALIAS,\n\tCommunityNickname,\n\tIsActive,\n\tTIMEZONESIDKEY,\n\tUSERROLEID,\n\tRECEIVESINFOEMAILS,\n\tProfileId,\n\tEmployeeNumber,\n\tManagerId,\n\tLASTLOGINDATE,\n\tCREATEDDATE,\n\tCREATEDBYID,\n\tLastModifiedDate,\n\tLastModifiedById,\n\tFEDERATIONIDENTIFIER,\n\tLAST_IPAD_SYNC_VOD__C,\n\tJJ_Core_Country_Code__c,\n\tJJ_CORE_WWID__C,\n\tJJ_SIMP_REGION__C,\n\tJJ_SIMP_PROFILE_GROUP_AP__C,\n\tJJ_Core_User_License__c,\n\tJJ_MSL_Primary_Responsible_TA__c,\n\tJJ_MSL_Secondary_Responsible_TA__c,\n\tLastname,\n\tFirstname,\n\tCity,\n\tState,\n\tPostalcode,\n\tUsertype,\n\tLanguagelocalekey,\n\tLast_Mobile_Sync_vod__c,\n\tUser_Type_vod__c,\n\tCountry_Code_vod__c,\n\tJJ_SHC_User_Franchise__c\nFROM\n    User\nWHERE \n\tLastModifiedDate>= {ts'1900-01-01 00:00:00'}\n\tand JJ_CORE_COUNTRY_CODE__C in ('ID','TH','PH') and CompanyName not in ('J&J India')",
+						"includeDeletedObjects": false
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Salesforce_Object_Veeva",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "sql_server_sink",
+						"type": "DatasetReference",
+						"parameters": {
+							"container": "ose",
+							"path": "test",
+							"file": "test.csv"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "Miscellaneous Pipelines"
+		},
+		"annotations": []
+	}
+}
