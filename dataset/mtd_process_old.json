@@ -1,15 +1,15 @@
 {
-	"name": "mtd_process",
+	"name": "mtd_process_old",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "adfadbplt001lssnfkpltdnaload002",
+			"referenceName": "adfadbplt001lssnfkpltdnaload",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "ADF_Framework_Datasets"
 		},
 		"annotations": [],
-		"type": "SnowflakeV2Table",
+		"type": "SnowflakeTable",
 		"schema": []
 	}
 }
