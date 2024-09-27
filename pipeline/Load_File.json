@@ -3270,7 +3270,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@not(equals(pipeline().parameters.parameters.value[0].QueryOnSource, 'NA' ))",
+						"value": "@and(not(equals(pipeline().parameters.parameters.value[0].QueryOnSource, 'NA' )),equals(pipeline().parameters.parameters.value[0].target_table,'EDI_SELL_OUT_PLANET'))",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
