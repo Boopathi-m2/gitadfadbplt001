@@ -1573,7 +1573,7 @@
 												"filename": "@pipeline().parameters.FtpFileName"
 											}
 										},
-										"enableLogging": true,
+										"enableLogging": false,
 										"storeSettings": {
 											"type": "SftpReadSettings",
 											"recursive": true,
