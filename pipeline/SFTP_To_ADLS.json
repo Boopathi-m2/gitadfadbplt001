@@ -1460,7 +1460,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"directory": {
-													"value": "@{pipeline().parameters.FtpDirectory}Archive/ADF_Archive",
+													"value": "@{concat(pipeline().parameters.FtpDirectory, 'Archive/ADF_Archive')}",
 													"type": "Expression"
 												},
 												"filename": {
