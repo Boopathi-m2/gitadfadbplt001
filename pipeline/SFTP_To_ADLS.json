@@ -1472,30 +1472,6 @@
 									]
 								},
 								{
-									"name": "Set error popcompanytrans",
-									"type": "SetVariable",
-									"dependsOn": [
-										{
-											"activity": "Archive popcompanytrans file",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"variableName": "errorResponse1",
-										"value": {
-											"value": "@activity('Copy popcompanytrans').error?.message",
-											"type": "Expression"
-										}
-									}
-								},
-								{
 									"name": "Set error popcompanytrans archive",
 									"type": "SetVariable",
 									"dependsOn": [
@@ -1544,7 +1520,7 @@
 									"type": "Delete",
 									"dependsOn": [
 										{
-											"activity": "Copy popcompanytrans",
+											"activity": "Archive popcompanytrans file",
 											"dependencyConditions": [
 												"Succeeded"
 											]
