@@ -1399,8 +1399,6 @@
 								{
 									"name": "Archive popcompanytrans file",
 									"type": "Copy",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Failed",
 									"dependsOn": [
 										{
 											"activity": "Copy popcompanytrans",
@@ -1478,9 +1476,9 @@
 									"type": "SetVariable",
 									"dependsOn": [
 										{
-											"activity": "Copy popcompanytrans",
+											"activity": "Archive popcompanytrans file",
 											"dependencyConditions": [
-												"Failed"
+												"Succeeded"
 											]
 										}
 									],
@@ -1500,8 +1498,6 @@
 								{
 									"name": "Set error popcompanytrans archive",
 									"type": "SetVariable",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive popcompanytrans file",
@@ -1526,8 +1522,6 @@
 								{
 									"name": "Archival fail 9",
 									"type": "Fail",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive popcompanytrans file",
