@@ -963,8 +963,6 @@
 								{
 									"name": "Archive popcompany file",
 									"type": "Copy",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Failed",
 									"dependsOn": [
 										{
 											"activity": "Copy popcompany file",
@@ -1025,7 +1023,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"directory": {
-													"value": "@{pipeline().parameters.FtpDirectory}/Archive/ADF_Archive",
+													"value": "@{pipeline().parameters.FtpDirectory}archive/ADF_Archive",
 													"type": "Expression"
 												},
 												"filename": {
@@ -1063,8 +1061,6 @@
 								{
 									"name": "Set error popcompany archive",
 									"type": "SetVariable",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive popcompany file",
@@ -1089,8 +1085,6 @@
 								{
 									"name": "Archival fail 7",
 									"type": "Fail",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive popcompany file",
@@ -1106,6 +1100,43 @@
 											"type": "Expression"
 										},
 										"errorCode": "002"
+									}
+								},
+								{
+									"name": "delete_popcompany",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Archive popcompany file",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "BinarySFTPpopcompany",
+											"type": "DatasetReference",
+											"parameters": {
+												"directory": "@pipeline().parameters.FtpDirectory",
+												"filename": "@pipeline().parameters.FtpFileName"
+											}
+										},
+										"enableLogging": false,
+										"storeSettings": {
+											"type": "SftpReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false,
+											"disableChunking": false
+										}
 									}
 								}
 							]
