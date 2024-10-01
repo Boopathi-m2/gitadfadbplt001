@@ -756,7 +756,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"directory": {
-													"value": "@{pipeline().parameters.FtpDirectory}",
+													"value": "@{pipeline().parameters.FtpDirectory}/test",
 													"type": "Expression"
 												},
 												"filename": {
@@ -786,8 +786,6 @@
 								{
 									"name": "Archive marketingclouadopstha file",
 									"type": "Copy",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Failed",
 									"dependsOn": [
 										{
 											"activity": "Copy marketingclouadopstha file",
@@ -929,6 +927,46 @@
 											"type": "Expression"
 										},
 										"errorCode": "002"
+									}
+								},
+								{
+									"name": "delete marketingclouadopstha sftp",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Archive marketingclouadopstha file",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "BinarySFTPmarketingcloudopstha",
+											"type": "DatasetReference",
+											"parameters": {
+												"directory": {
+													"value": "@{pipeline().parameters.FtpDirectory}/test",
+													"type": "Expression"
+												},
+												"filename": "@pipeline().parameters.FtpFileName"
+											}
+										},
+										"enableLogging": false,
+										"storeSettings": {
+											"type": "SftpReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false,
+											"disableChunking": false
+										}
 									}
 								}
 							]
