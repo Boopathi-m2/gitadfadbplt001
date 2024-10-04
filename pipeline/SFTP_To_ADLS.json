@@ -91,8 +91,6 @@
 								{
 									"name": "Archive iqviaaus file",
 									"type": "Copy",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Failed",
 									"dependsOn": [
 										{
 											"activity": "Copy iqviaaus file",
@@ -235,6 +233,46 @@
 										},
 										"errorCode": "002"
 									}
+								},
+								{
+									"name": "DeleteSFTP_iqviaaus",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Archive iqviaaus file",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "BinarySFTPiqviaaus",
+											"type": "DatasetReference",
+											"parameters": {
+												"directory": {
+													"value": "@pipeline().parameters.FtpDirectory",
+													"type": "Expression"
+												},
+												"filename": "@pipeline().parameters.FtpFileName"
+											}
+										},
+										"enableLogging": false,
+										"storeSettings": {
+											"type": "SftpReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false,
+											"disableChunking": false
+										}
+									}
 								}
 							]
 						},
@@ -309,8 +347,6 @@
 								{
 									"name": "Archive perensoaus file",
 									"type": "Copy",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Failed",
 									"dependsOn": [
 										{
 											"activity": "Copy perensoaus file",
@@ -452,6 +488,49 @@
 											"type": "Expression"
 										},
 										"errorCode": "002"
+									}
+								},
+								{
+									"name": "Deletesftp_perenso",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Archive perensoaus file",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "BinarySFTPperensoaus",
+											"type": "DatasetReference",
+											"parameters": {
+												"directory": {
+													"value": "@pipeline().parameters.FtpDirectory",
+													"type": "Expression"
+												},
+												"filename": {
+													"value": "@pipeline().parameters.FtpFileName",
+													"type": "Expression"
+												}
+											}
+										},
+										"enableLogging": false,
+										"storeSettings": {
+											"type": "SftpReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false,
+											"disableChunking": false
+										}
 									}
 								}
 							]
@@ -756,7 +835,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"directory": {
-													"value": "@{pipeline().parameters.FtpDirectory}/test",
+													"value": "@{pipeline().parameters.FtpDirectory}",
 													"type": "Expression"
 												},
 												"filename": {
@@ -954,7 +1033,7 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"directory": {
-													"value": "@{pipeline().parameters.FtpDirectory}/test",
+													"value": "@{pipeline().parameters.FtpDirectory}",
 													"type": "Expression"
 												},
 												"filename": "@pipeline().parameters.FtpFileName"
@@ -1626,7 +1705,7 @@
 									}
 								},
 								{
-									"name": "Delete1",
+									"name": "DeleteSFTP popcompanytrans",
 									"type": "Delete",
 									"dependsOn": [
 										{
