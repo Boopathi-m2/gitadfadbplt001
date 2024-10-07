@@ -563,7 +563,7 @@
 									"storeSettings": {
 										"type": "SftpWriteSettings",
 										"operationTimeout": "01:00:00",
-										"useTempFileRename": true
+										"useTempFileRename": false
 									}
 								},
 								"enableStaging": false
