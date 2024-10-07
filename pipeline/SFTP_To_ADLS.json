@@ -189,8 +189,6 @@
 								{
 									"name": "Set error iqviaaus archive",
 									"type": "SetVariable",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive iqviaaus file",
@@ -215,8 +213,6 @@
 								{
 									"name": "Archival fail 1",
 									"type": "Fail",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive iqviaaus file",
@@ -445,8 +441,6 @@
 								{
 									"name": "Set error perensoaus archive",
 									"type": "SetVariable",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive perensoaus file",
@@ -471,8 +465,6 @@
 								{
 									"name": "Archival fail 2",
 									"type": "Fail",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive perensoaus file",
@@ -704,8 +696,6 @@
 								{
 									"name": "Set error exacttargettha archive",
 									"type": "SetVariable",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive exacttargettha file",
@@ -730,8 +720,6 @@
 								{
 									"name": "Archival fail 5",
 									"type": "Fail",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive exacttargettha file",
@@ -963,8 +951,6 @@
 								{
 									"name": "Set error marketingcloudopstha archive",
 									"type": "SetVariable",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive marketingclouadopstha file",
@@ -989,8 +975,6 @@
 								{
 									"name": "Archival fail 6",
 									"type": "Fail",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive marketingclouadopstha file",
@@ -1394,8 +1378,6 @@
 								{
 									"name": "Archive marketingcloudopsjpndcl file",
 									"type": "Copy",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Failed",
 									"dependsOn": [
 										{
 											"activity": "Copy marketingcloudopsjpndcl",
@@ -1470,8 +1452,6 @@
 								{
 									"name": "Set error marketingcloudopsjpndcl archive",
 									"type": "SetVariable",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive marketingcloudopsjpndcl file",
@@ -1496,8 +1476,6 @@
 								{
 									"name": "Archival fail 8",
 									"type": "Fail",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive marketingcloudopsjpndcl file",
@@ -1513,6 +1491,46 @@
 											"type": "Expression"
 										},
 										"errorCode": "002"
+									}
+								},
+								{
+									"name": "delete marketingclouadopsjpndcl sftp_copy1",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Archive marketingcloudopsjpndcl file",
+											"dependencyConditions": [
+												"Succeeded"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "BinarySFTPmarketingcloudopsjpndcl",
+											"type": "DatasetReference",
+											"parameters": {
+												"directory": "@pipeline().parameters.FtpDirectory",
+												"filename": {
+													"value": "@pipeline().parameters.FtpFileName",
+													"type": "Expression"
+												}
+											}
+										},
+										"enableLogging": false,
+										"storeSettings": {
+											"type": "SftpReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false,
+											"disableChunking": false
+										}
 									}
 								}
 							]
