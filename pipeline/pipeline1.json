@@ -13,7 +13,7 @@
 						]
 					},
 					{
-						"activity": "Set business Webhook_copy1",
+						"activity": "Set business Webhook",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -87,7 +87,7 @@
 				}
 			},
 			{
-				"name": "Set business Webhook_copy1",
+				"name": "Set business Webhook",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"policy": {
