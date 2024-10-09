@@ -72,7 +72,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "businessWebhook",
-					"value": "https://kenvue.webhook.office.com/webhookb2/08067575-6f4e-4e13-a36c-bc85d41b2896@7ba64ac2-8a2b-417e-9b8f-fcf8238f2a56/IncomingWebhook/39a67f22c5554058b0fdb0a6ca2cf97c/b96e6ec8-5d95-42c8-9ba2-44a3024dd2ac"
+					"value": "https://prod-27.westus.logic.azure.com:443/workflows/68d3ef8bc6aa47be98673021fc2b48d1/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=K6iMHutOYgdGY4AXg8mBL8_kXInZeKyTBUgMTVw98Q8"
 				}
 			}
 		],
