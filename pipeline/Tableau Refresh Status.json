@@ -616,7 +616,8 @@
 										"value": "Refresh failed for tableau source (@{pipeline().parameters.tableauSourceName})",
 										"type": "Expression"
 									},
-									"isError": "Yes"
+									"isError": "Yes",
+									"container": "@pipeline().parameters.container"
 								}
 							}
 						}
