@@ -536,6 +536,8 @@
 								{
 									"name": "Copy exacttargettha file",
 									"type": "Copy",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [],
 									"policy": {
 										"timeout": "0.12:00:00",
@@ -641,7 +643,7 @@
 									},
 									"inputs": [
 										{
-											"referenceName": "BinarySFTPexacttargettha",
+											"referenceName": "BinarySFTPmarketingcloudopsjpndcl",
 											"type": "DatasetReference",
 											"parameters": {
 												"directory": {
@@ -660,14 +662,8 @@
 											"referenceName": "BinarySFTPexacttargettha",
 											"type": "DatasetReference",
 											"parameters": {
-												"directory": {
-													"value": "@{split(pipeline().parameters.FtpDirectory,'/')[0]}/Archive/ADF_Archive",
-													"type": "Expression"
-												},
-												"filename": {
-													"value": "@pipeline().parameters.FtpFileName",
-													"type": "Expression"
-												}
+												"directory": "Import/Archive/test",
+												"filename": "test.csv"
 											}
 										}
 									]
@@ -675,6 +671,8 @@
 								{
 									"name": "Set error exacttargettha copy",
 									"type": "SetVariable",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Copy exacttargettha file",
@@ -699,6 +697,8 @@
 								{
 									"name": "Set error exacttargettha archive",
 									"type": "SetVariable",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive exacttargettha file",
@@ -723,6 +723,8 @@
 								{
 									"name": "Archival fail 5",
 									"type": "Fail",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Set error exacttargettha archive",
@@ -743,6 +745,8 @@
 								{
 									"name": "sftp_exacttargettha_delete",
 									"type": "Delete",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive exacttargettha file",
