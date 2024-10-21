@@ -2539,7 +2539,7 @@
 			},
 			"FtpName": {
 				"type": "string",
-				"defaultValue": "marketingcloudopsjpndcl"
+				"defaultValue": "exacttargettha"
 			},
 			"AdlsContainer": {
 				"type": "string"
