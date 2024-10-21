@@ -1301,6 +1301,8 @@
 								{
 									"name": "Copy marketingcloudopsjpndcl",
 									"type": "Copy",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [],
 									"policy": {
 										"timeout": "0.12:00:00",
@@ -1366,6 +1368,8 @@
 								{
 									"name": "Set error marketingcloudopsjpndcl copy",
 									"type": "SetVariable",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Copy marketingcloudopsjpndcl",
@@ -1449,14 +1453,8 @@
 											"referenceName": "BinarySFTPmarketingcloudopsjpndcl",
 											"type": "DatasetReference",
 											"parameters": {
-												"directory": {
-													"value": "@{pipeline().parameters.FtpDirectory}/Archive/ADF_Archive",
-													"type": "Expression"
-												},
-												"filename": {
-													"value": "@pipeline().parameters.FtpFileName",
-													"type": "Expression"
-												}
+												"directory": "test",
+												"filename": "test.csv"
 											}
 										}
 									]
@@ -1464,6 +1462,8 @@
 								{
 									"name": "Set error marketingcloudopsjpndcl archive",
 									"type": "SetVariable",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive marketingcloudopsjpndcl file",
@@ -1488,6 +1488,8 @@
 								{
 									"name": "Archival fail 8",
 									"type": "Fail",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Set error marketingcloudopsjpndcl archive",
@@ -1508,6 +1510,8 @@
 								{
 									"name": "sftp_marketingcloudopsjpndcl_delete",
 									"type": "Delete",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive marketingcloudopsjpndcl file",
@@ -2523,10 +2527,12 @@
 		],
 		"parameters": {
 			"FtpDirectory": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "Export"
 			},
 			"FtpFileName": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "export_10102024.csv"
 			},
 			"FtpName": {
 				"type": "string",
