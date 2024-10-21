@@ -1808,6 +1808,8 @@
 			{
 				"name": "audit start",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"secureInput": false
@@ -1861,6 +1863,8 @@
 			{
 				"name": "audit success",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "If Unzip Needed",
@@ -1921,6 +1925,8 @@
 			{
 				"name": "audit fail",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Switch SFTP",
@@ -1981,6 +1987,8 @@
 			{
 				"name": "error log - file movement from sftp",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Switch SFTP",
@@ -2035,6 +2043,8 @@
 			{
 				"name": "Send error - file movement from sftp",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Switch SFTP",
@@ -2088,6 +2098,8 @@
 			{
 				"name": "If Unzip Needed",
 				"type": "IfCondition",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Switch SFTP",
@@ -2338,6 +2350,8 @@
 			{
 				"name": "error log -unzipping file",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "If Unzip Needed",
@@ -2392,6 +2406,8 @@
 			{
 				"name": "Send error - unzipping file",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "If Unzip Needed",
@@ -2445,6 +2461,8 @@
 			{
 				"name": "audit fail while unzipping",
 				"type": "ExecutePipeline",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "If Unzip Needed",
