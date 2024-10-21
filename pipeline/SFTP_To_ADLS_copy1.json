@@ -1394,6 +1394,8 @@
 								{
 									"name": "Archive marketingcloudopsjpndcl file",
 									"type": "Copy",
+									"state": "Inactive",
+									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Copy marketingcloudopsjpndcl",
@@ -1513,8 +1515,6 @@
 								{
 									"name": "sftp_marketingcloudopsjpndcl_delete",
 									"type": "Delete",
-									"state": "Inactive",
-									"onInactiveMarkAs": "Succeeded",
 									"dependsOn": [
 										{
 											"activity": "Archive marketingcloudopsjpndcl file",
@@ -1537,11 +1537,11 @@
 											"type": "DatasetReference",
 											"parameters": {
 												"directory": {
-													"value": "@pipeline().parameters.FtpDirectory",
+													"value": "@{pipeline().parameters.FtpDirectory}/test",
 													"type": "Expression"
 												},
 												"filename": {
-													"value": "@pipeline().parameters.FtpFileName",
+													"value": "test.csv",
 													"type": "Expression"
 												}
 											}
