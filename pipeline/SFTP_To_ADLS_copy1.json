@@ -1453,7 +1453,10 @@
 											"referenceName": "BinarySFTPmarketingcloudopsjpndcl",
 											"type": "DatasetReference",
 											"parameters": {
-												"directory": "test",
+												"directory": {
+													"value": "@{pipeline().parameters.FtpDirectory}/test",
+													"type": "Expression"
+												},
 												"filename": "test.csv"
 											}
 										}
@@ -2532,7 +2535,7 @@
 			},
 			"FtpFileName": {
 				"type": "string",
-				"defaultValue": "export_10102024.csv"
+				"defaultValue": "export__10102024.csv"
 			},
 			"FtpName": {
 				"type": "string",
